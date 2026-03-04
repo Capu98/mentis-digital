@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MM SecurityService — Vigilanza Privata Milano e Provincia</title>
+<meta name="description" content="Servizi professionali di vigilanza privata e sicurezza eventi a Milano e provincia. Personale qualificato, intervento rapido, disponibilità 24/7. Contatta MM SecurityService.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── RESET & VARIABILI ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --navy:       #0f1c3a;
+  --navy-mid:   #1a2744;
+  --navy-light: #243258;
+  --navy-card:  #1e2f55;
+  --gold:       #C9A84C;
+  --gold-light: #DFC06A;
+  --gold-dark:  #A8883A;
+  --gold-pale:  rgba(201,168,76,.08);
+  --text:       #F0F4FF;
+  --text-muted: #8899BB;
+  --white:      #FFFFFF;
+  --bg:         #F7F8FC;
+  --bg-alt:     #EEF1F8;
+  --slate:      #4A5568;
+  --border:     #D8DEF0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--navy);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  letter-spacing: -.3px;
+}
+
+/* ── CONTAINER ── */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  max-width: 620px;
+  margin-bottom: clamp(44px, 7vw, 68px);
+}
+
+.section-header.centered {
+  text-align: center;
+  margin-left: auto; margin-right: auto;
+}
+
+.s-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.s-label::before {
+  content: '';
+  display: block; width: 24px; height: 2px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.s-title {
+  font-size: clamp(26px, 3.8vw, 40px);
+  font-weight: 800; line-height: 1.15;
+  color: var(--navy); margin-bottom: 16px;
+}
+
+.s-title .accent { color: var(--gold); }
+
+.s-sub {
+  font-size: 16px; color: var(--slate);
+  line-height: 1.75; font-weight: 400;
+}
+
+/* dark variant */
+.s-title-light { color: var(--text); }
+.s-sub-light   { color: var(--text-muted); }
+
+/* ── BUTTONS ── */
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold);
+  color: var(--navy); font-weight: 700; font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 13px 30px; border-radius: 4px; border: none;
+  cursor: pointer; transition: all .25s;
+  box-shadow: 0 4px 18px rgba(201,168,76,.3);
+  text-decoration: none; letter-spacing: .3px;
+}
+.btn-gold:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,168,76,.4);
+}
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent;
+  color: var(--gold); font-weight: 600; font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 12px 28px; border-radius: 4px;
+  border: 1.5px solid rgba(201,168,76,.5);
+  cursor: pointer; transition: all .25s;
+  text-decoration: none; letter-spacing: .3px;
+}
+.btn-outline:hover {
+  background: rgba(201,168,76,.1);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* ── NAVBAR ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15,28,58,.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201,168,76,.15);
+  height: 70px;
+  display: flex; align-items: center;
+  transition: box-shadow .3s;
+}
+
+.nav.scrolled {
+  box-shadow: 0 4px 24px rgba(0,0,0,.4);
+}
+
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%;
+}
+
+.nav-logo img { height: 38px; width: auto; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px; font-weight: 600; font-family: 'Montserrat', sans-serif;
+  color: rgba(240,244,255,.7); letter-spacing: .4px;
+  padding: 7px 14px; border-radius: 4px; transition: all .2s;
+}
+.nav-links a:hover { color: var(--gold); background: rgba(201,168,76,.08); }
+
+.nav-cta {
+  font-size: 13px; font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--gold); color: var(--navy) !important;
+  padding: 9px 22px; border-radius: 4px;
+  transition: all .2s; letter-spacing: .3px;
+}
+.nav-cta:hover {
+  background: var(--gold-light) !important;
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none; background: none; border: none;
+  cursor: pointer; padding: 8px; border-radius: 4px;
+  color: var(--text-muted); transition: color .2s;
+}
+.nav-toggle:hover { color: var(--gold); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a2f5a 100%);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding-top: 70px;
+}
+
+/* Pattern geometrico SVG inline */
+.hero-pattern {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden;
+}
+
+/* Scudo watermark */
+.hero-shield {
+  position: absolute;
+  right: -60px; top: 50%;
+  transform: translateY(-50%);
+  width: clamp(320px, 45vw, 580px);
+  pointer-events: none; opacity: .045;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: clamp(72px, 12vw, 112px) 0;
+  max-width: 680px;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(201,168,76,.3);
+  background: rgba(201,168,76,.07);
+  color: var(--gold); font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 7px 16px; border-radius: 2px; margin-bottom: 28px;
+}
+
+.hero-badge-icon { font-size: 14px; }
+
+.hero-title {
+  font-size: clamp(34px, 5.5vw, 62px);
+  font-weight: 900; line-height: 1.05; letter-spacing: -1px;
+  color: var(--white); margin-bottom: 22px;
+}
+
+.hero-title .gold-line {
+  display: block; color: var(--gold);
+}
+
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: rgba(240,244,255,.65); line-height: 1.75;
+  margin-bottom: 40px; font-weight: 300;
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+
+.hero-trust {
+  display: flex; align-items: center; gap: 28px;
+  margin-top: 56px; flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: rgba(240,244,255,.5);
+  font-weight: 500; letter-spacing: .3px;
+}
+
+.trust-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+}
+
+/* ── CHI SIAMO ── */
+.chi-siamo {
+  padding: clamp(80px, 10vw, 120px) 0;
+  background: var(--white);
+}
+
+.chi-siamo-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+
+.chi-siamo-text p {
+  font-size: 15px; color: var(--slate); line-height: 1.8;
+  margin-bottom: 20px;
+}
+.chi-siamo-text p:last-child { margin-bottom: 0; }
+
+.chi-siamo-visual {
+  display: flex; justify-content: center; align-items: center;
+}
+
+.shield-graphic {
+  width: 220px; height: 260px;
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+}
+
+.shield-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(48px, 6vw, 72px); font-weight: 900;
+  color: var(--gold); line-height: 1;
+}
+.shield-number-label {
+  font-size: 13px; color: var(--slate); font-weight: 600;
+  text-align: center; margin-top: 4px; letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+
+.stat-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px; padding: 20px 16px;
+  text-align: center; transition: border-color .2s;
+}
+.stat-item:hover { border-color: var(--gold); }
+
+.stat-num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px; font-weight: 900; color: var(--navy);
+  letter-spacing: -1px; line-height: 1;
+}
+.stat-num span { color: var(--gold); }
+.stat-label {
+  font-size: 11px; color: var(--slate); margin-top: 4px;
+  font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+}
+
+/* ── SERVIZI ── */
+.servizi {
+  padding: clamp(80px, 10vw, 120px) 0;
+  background: var(--bg-alt);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px; padding: 36px 32px;
+  position: relative; overflow: hidden;
+  transition: all .3s; cursor: default;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .35s ease;
+}
+
+.service-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 12px 40px rgba(201,168,76,.12), 0 4px 16px rgba(0,0,0,.06);
+  transform: translateY(-5px);
+}
+.service-card:hover::after { transform: scaleX(1); }
+
+.service-icon-wrap {
+  width: 56px; height: 56px; border-radius: 6px;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px;
+}
+
+.service-icon-wrap svg { width: 26px; height: 26px; }
+
+.service-title {
+  font-size: 18px; font-weight: 700; color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.service-text {
+  font-size: 14px; color: var(--slate); line-height: 1.75;
+}
+
+.service-detail {
+  margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px;
+}
+
+.service-chip {
+  font-size: 11px; font-weight: 600; letter-spacing: .5px;
+  color: var(--gold-dark); background: var(--gold-pale);
+  border: 1px solid rgba(201,168,76,.2);
+  padding: 3px 10px; border-radius: 2px;
+  text-transform: uppercase;
+}
+
+/* ── PERCHÉ SCEGLIERCI ── */
+.perche {
+  padding: clamp(80px, 10vw, 120px) 0;
+  background: var(--navy);
+  position: relative; overflow: hidden;
+}
+
+.perche::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.perche-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.perche-item {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(201,168,76,.12);
+  border-radius: 6px; padding: 36px 28px;
+  transition: all .3s;
+}
+.perche-item:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(201,168,76,.3);
+  transform: translateY(-4px);
+}
+
+.perche-icon {
+  width: 52px; height: 52px; border-radius: 6px;
+  background: rgba(201,168,76,.12);
+  border: 1px solid rgba(201,168,76,.2);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px;
+}
+.perche-icon svg { width: 24px; height: 24px; }
+
+.perche-title {
+  font-size: 17px; font-weight: 700; color: var(--white);
+  margin-bottom: 10px;
+}
+.perche-text {
+  font-size: 13px; color: var(--text-muted); line-height: 1.7;
+}
+
+/* ── CONTATTI ── */
+.contatti {
+  padding: clamp(80px, 10vw, 120px) 0;
+  background: var(--white);
+}
+
+.contatti-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--slate);
+  margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 4px; padding: 12px 16px;
+  font-family: 'Inter', sans-serif; font-size: 14px;
+  color: var(--navy); outline: none;
+  transition: border-color .2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(201,168,76,.12);
+}
+
+.form-group textarea { resize: vertical; min-height: 110px; }
+
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--navy);
+  color: var(--gold); font-weight: 700; font-size: 14px;
+  font-family: 'Montserrat', sans-serif; letter-spacing: .5px;
+  padding: 14px 24px; border-radius: 4px; border: 2px solid var(--navy);
+  cursor: pointer; transition: all .25s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.form-submit:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,168,76,.3);
+}
+.form-submit:disabled {
+  opacity: .5; cursor: not-allowed; transform: none;
+}
+
+.form-success-msg {
+  display: none;
+  text-align: center; padding: 28px;
+  background: rgba(201,168,76,.06);
+  border: 1px solid rgba(201,168,76,.25);
+  border-radius: 6px; margin-top: 16px;
+}
+.form-success-msg .success-icon { font-size: 40px; margin-bottom: 12px; }
+.form-success-msg h4 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.form-success-msg p  { font-size: 13px; color: var(--slate); }
+
+/* Info contatti */
+.contatti-info { padding-top: 8px; }
+
+.info-block {
+  display: flex; gap: 16px; margin-bottom: 28px;
+  align-items: flex-start;
+}
+
+.info-icon {
+  width: 44px; height: 44px; border-radius: 4px;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.info-icon svg { width: 20px; height: 20px; }
+
+.info-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 3px;
+}
+.info-value {
+  font-size: 14px; color: var(--slate); line-height: 1.5;
+}
+.info-value strong { color: var(--navy); }
+
+.badge-24h {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(15,28,58,.06); border: 1px solid rgba(15,28,58,.12);
+  border-radius: 4px; padding: 10px 16px; margin-top: 8px;
+}
+.badge-24h-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 0 3px rgba(34,197,94,.2);
+  animation: pulse-green 2s infinite;
+}
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,.2); }
+  50% { box-shadow: 0 0 0 6px rgba(34,197,94,.08); }
+}
+.badge-24h span { font-size: 13px; font-weight: 600; color: var(--navy); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(201,168,76,.15);
+  padding: 32px 0;
+}
+
+.footer-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+
+.footer-logo img { height: 30px; width: auto; opacity: .8; }
+
+.footer-nav {
+  display: flex; gap: 24px; list-style: none;
+}
+.footer-nav a {
+  font-size: 12px; color: #475569;
+  font-weight: 500; transition: color .2s;
+}
+.footer-nav a:hover { color: var(--gold); }
+
+.footer-copy {
+  font-size: 12px; color: #334155;
+}
+
+/* ── LAVORA CON NOI ── */
+.lavora { background: #f8f9fc; padding: 100px 0; }
+.lavora-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 48px; margin-top: 48px;
+}
+.lavora-requisiti h3, .lavora-form-wrap h3 {
+  font-size: 18px; font-weight: 700; color: var(--navy);
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--gold);
+}
+.requisiti-list { list-style: none; margin-bottom: 28px; }
+.requisiti-list li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid #e8edf2;
+  font-size: 15px; color: #334155;
+}
+.req-icon {
+  color: var(--red); font-weight: 800; font-size: 14px;
+  width: 20px; text-align: center;
+}
+.lavora-benefit {
+  background: var(--navy); border-radius: 10px;
+  padding: 20px 24px; margin-top: 8px;
+}
+.lavora-benefit h4 {
+  color: var(--gold); font-size: 13px; letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.lavora-benefit p { color: #94a3b8; font-size: 14px; line-height: 1.7; }
+.lavora-form-wrap form { display: flex; flex-direction: column; gap: 16px; }
+.lavora-form-wrap .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.lavora-form-wrap .form-group { display: flex; flex-direction: column; gap: 6px; }
+.lavora-form-wrap label { font-size: 12px; font-weight: 600; color: #475569; letter-spacing: 0.5px; text-transform: uppercase; }
+.lavora-form-wrap input,
+.lavora-form-wrap select,
+.lavora-form-wrap textarea {
+  border: 1.5px solid #e2e8f0; border-radius: 8px;
+  padding: 12px 14px; font-size: 14px; color: #1e293b;
+  background: white; transition: border-color .2s;
+  font-family: inherit;
+}
+.lavora-form-wrap select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+.lavora-form-wrap input:focus,
+.lavora-form-wrap select:focus,
+.lavora-form-wrap textarea:focus { outline: none; border-color: var(--red); }
+.lavora-form-wrap textarea { min-height: 100px; resize: vertical; }
+
+@media (max-width: 768px) {
+  .lavora-grid { grid-template-columns: 1fr; }
+  .lavora-form-wrap .form-row { grid-template-columns: 1fr; }
+}
+
+/* ── ANIMAZIONI SCROLL ── */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+[data-animate].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-delay="1"] { transition-delay: .1s; }
+[data-delay="2"] { transition-delay: .2s; }
+[data-delay="3"] { transition-delay: .3s; }
+[data-delay="4"] { transition-delay: .4s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .chi-siamo-inner  { grid-template-columns: 1fr; gap: 48px; }
+  .services-grid    { grid-template-columns: 1fr; }
+  .perche-grid      { grid-template-columns: 1fr; }
+  .contatti-inner   { grid-template-columns: 1fr; gap: 56px; }
+  .nav-links        { display: none; }
+  .nav-toggle       { display: block; }
+  .nav-links.open {
+    display: flex; flex-direction: column; align-items: stretch;
+    position: fixed; top: 70px; left: 0; right: 0;
+    background: rgba(15,28,58,.98);
+    border-bottom: 1px solid rgba(201,168,76,.15);
+    padding: 16px clamp(20px, 5vw, 60px);
+    gap: 4px; z-index: 999;
+  }
+  .nav-links.open a { padding: 10px 14px; border-radius: 4px; }
+}
+
+@media (max-width: 600px) {
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .hero-actions a, .hero-actions button { width: 100%; justify-content: center; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-nav { justify-content: center; flex-wrap: wrap; gap: 16px; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="nav" id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.svg" alt="MM SecurityService">
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#chi-siamo">Chi siamo</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#perche">Perché noi</a></li>
+      <li><a href="#lavora">Lavora con noi</a></li>
+      <li><a href="#contatti" class="nav-cta">Preventivo gratuito</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6"  x2="19" y2="6"/>
+        <line x1="3" y1="11" x2="19" y2="11"/>
+        <line x1="3" y1="16" x2="19" y2="16"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+
+  <!-- Pattern geometrico SVG inline -->
+  <div class="hero-pattern">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+         style="position:absolute;inset:0;pointer-events:none">
+      <defs>
+        <pattern id="geo-pattern" x="0" y="0" width="60" height="60"
+                 patternUnits="userSpaceOnUse">
+          <path d="M30 0 L60 30 L30 60 L0 30 Z"
+                fill="none" stroke="rgba(201,168,76,0.07)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#geo-pattern)"/>
+    </svg>
+    <!-- Linee diagonali overlay -->
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+         style="position:absolute;inset:0;pointer-events:none;opacity:.04">
+      <defs>
+        <pattern id="line-pattern" x="0" y="0" width="40" height="40"
+                 patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+          <line x1="0" y1="0" x2="0" y2="40"
+                stroke="rgba(201,168,76,1)" stroke-width=".5"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#line-pattern)"/>
+    </svg>
+  </div>
+
+  <!-- Scudo watermark -->
+  <div class="hero-shield" aria-hidden="true">
+    <svg viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M150 18 L268 72 L268 190 C268 274 150 342 150 342 C150 342 32 274 32 190 L32 72 Z"
+            stroke="#C9A84C" stroke-width="2" fill="rgba(201,168,76,0.06)"/>
+      <path d="M150 52 L240 96 L240 186 C240 254 150 310 150 310 C150 310 60 254 60 186 L60 96 Z"
+            stroke="#C9A84C" stroke-width="1.2" fill="none" opacity=".5"/>
+      <path d="M150 90 L150 270 M90 150 L210 150" stroke="#C9A84C" stroke-width="1.5" opacity=".4"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-icon">🛡</span>
+        Sicurezza Professionale · Milano e Provincia
+      </div>
+
+      <h1 class="hero-title">
+        La tua sicurezza
+        <span class="gold-line">è la nostra missione.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Servizi professionali di vigilanza privata e sicurezza eventi a Milano e provincia. Personale qualificato, intervento rapido, disponibilità 24/7.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contatti" class="btn-gold">
+          Richiedi un preventivo
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="7.5" x2="12" y2="7.5"/>
+            <polyline points="8,3.5 12,7.5 8,11.5"/>
+          </svg>
+        </a>
+        <a href="#servizi" class="btn-outline">Scopri i servizi</a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-dot"></span>
+          Personale certificato
+        </div>
+        <div class="trust-item">
+          <span class="trust-dot"></span>
+          Disponibile 24/7
+        </div>
+        <div class="trust-item">
+          <span class="trust-dot"></span>
+          Milano e Provincia
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHI SIAMO ── -->
+<section class="chi-siamo" id="chi-siamo">
+  <div class="container">
+    <div class="chi-siamo-inner">
+      <!-- Testo -->
+      <div data-animate>
+        <div class="section-header">
+          <span class="s-label">Chi siamo</span>
+          <h2 class="s-title">Un nome che significa <span class="accent">garanzia.</span></h2>
+        </div>
+        <div class="chi-siamo-text">
+          <p>
+            MM SecurityService è un'agenzia di sicurezza privata con sede a Vigevano, fondata da Matteo Omini con l'obiettivo di offrire alle aziende e ai privati del territorio servizi di vigilanza professionali, affidabili e su misura.
+          </p>
+          <p>
+            Il nostro team è composto da guardie giurate certificate, con formazione continua e piena conformità alle normative vigenti in materia di sicurezza privata. Ogni incarico è seguito con la massima attenzione ai dettagli e alla sicurezza delle persone.
+          </p>
+          <p>
+            Dalla vigilanza fissa agli eventi, dai sistemi di sorveglianza al trasporto valori: siamo l'interlocutore unico per tutte le esigenze di sicurezza del territorio lodigiano e pavese.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stat grid -->
+      <div data-animate data-delay="2">
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-num">24<span>/7</span></div>
+            <div class="stat-label">Operatività</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100<span>%</span></div>
+            <div class="stat-label">Personale certificato</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num"><span>&lt;</span>15'</div>
+            <div class="stat-label">Tempo di intervento</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4<span>+</span></div>
+            <div class="stat-label">Servizi specializzati</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVIZI ── -->
+<section class="servizi" id="servizi">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="s-label">I nostri servizi</span>
+      <h2 class="s-title">Soluzioni di sicurezza <span class="accent">su misura.</span></h2>
+      <p class="s-sub">Ogni servizio è progettato per rispondere alle specifiche esigenze del cliente, con professionisti preparati per ogni scenario.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Card 1 -->
+      <div class="service-card" data-animate data-delay="1">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 26 26" fill="none" stroke="#C9A84C" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 3L3 7v6c0 5.5 4.3 10.7 10 12 5.7-1.3 10-6.5 10-12V7L13 3z"/>
+          </svg>
+        </div>
+        <div class="service-title">Vigilanza privata</div>
+        <div class="service-text">
+          Guardie giurate per la protezione di edifici, magazzini, aziende e proprietà private. Presidio fisso o turni programmati in base alle necessità operative del cliente.
+        </div>
+        <div class="service-detail">
+          <span class="service-chip">Presidio fisso</span>
+          <span class="service-chip">Turni notturni</span>
+          <span class="service-chip">Piani aziendali</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card" data-animate data-delay="2">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 26 26" fill="none" stroke="#C9A84C" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="20" height="16" rx="2"/>
+            <path d="M3 9h20"/>
+            <path d="M9 4v5M17 4v5"/>
+            <circle cx="13" cy="16" r="2"/>
+          </svg>
+        </div>
+        <div class="service-title">Sicurezza eventi</div>
+        <div class="service-text">
+          Gestione dell'ordine pubblico per concerti, fiere, eventi sportivi e manifestazioni private. Coordinamento accessi, controllo varchi e presidio antipanico.
+        </div>
+        <div class="service-detail">
+          <span class="service-chip">Controllo accessi</span>
+          <span class="service-chip">Grandi eventi</span>
+          <span class="service-chip">Steward certificati</span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PERCHÉ SCEGLIERCI ── -->
+<section class="perche" id="perche">
+  <div class="container">
+    <div class="section-header centered" data-animate>
+      <span class="s-label" style="color:var(--gold)">Perché sceglierci</span>
+      <h2 class="s-title s-title-light">Professionalità che<br><span class="accent">fa la differenza.</span></h2>
+      <p class="s-sub s-sub-light">Non siamo un numero in un call center. Siamo un team locale che conosce il territorio e risponde direttamente alle esigenze del cliente.</p>
+    </div>
+
+    <div class="perche-grid">
+
+      <!-- Item 1 -->
+      <div class="perche-item" data-animate data-delay="1">
+        <div class="perche-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M5 20v-1a7 7 0 0 1 14 0v1"/>
+            <path d="M16 3.5 L17.5 5 L21 1.5" stroke="#C9A84C" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="perche-title">Personale qualificato e certificato</div>
+        <div class="perche-text">
+          Tutte le nostre guardie giurate sono in possesso delle licenze prefettizie richieste dalla legge e seguono aggiornamenti formativi periodici. Zero compromessi sulla qualifica.
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="perche-item" data-animate data-delay="2">
+        <div class="perche-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <polyline points="12,6 12,12 16,14"/>
+            <line x1="12" y1="2" x2="12" y2="4" stroke-width="2.5"/>
+            <line x1="12" y1="20" x2="12" y2="22" stroke-width="2.5"/>
+            <line x1="2" y1="12" x2="4" y2="12" stroke-width="2.5"/>
+            <line x1="20" y1="12" x2="22" y2="12" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="perche-title">Disponibilità 24/7</div>
+        <div class="perche-text">
+          La sicurezza non ha orari. La nostra centrale operativa è attiva 24 ore su 24, 365 giorni l'anno. Sempre raggiungibili per emergenze, attivazioni rapide o semplici richieste.
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="perche-item" data-animate data-delay="3">
+        <div class="perche-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+          </svg>
+        </div>
+        <div class="perche-title">Intervento rapido sul territorio</div>
+        <div class="perche-text">
+          Operativi a Milano e in tutta la provincia. La nostra presenza locale garantisce tempi di intervento inferiori ai 15 minuti in caso di allarme o emergenza.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTATTI ── -->
+<section class="contatti" id="contatti">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="s-label">Contattaci</span>
+      <h2 class="s-title">Parliamo della tua <span class="accent">sicurezza.</span></h2>
+      <p class="s-sub">Compila il form per ricevere un preventivo gratuito e senza impegno. Ti risponderemo entro poche ore.</p>
+    </div>
+
+    <div class="contatti-inner">
+
+      <!-- Form -->
+      <div data-animate>
+        <form id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-nome">Nome e cognome *</label>
+              <input type="text" id="f-nome" placeholder="Mario Rossi" required>
+            </div>
+            <div class="form-group">
+              <label for="f-tel">Telefono *</label>
+              <input type="tel" id="f-tel" placeholder="+39 320 000 0000" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="f-email">Email *</label>
+            <input type="email" id="f-email" placeholder="mario@esempio.it" required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-msg">Come possiamo aiutarti?</label>
+            <textarea id="f-msg" placeholder="Descrivici brevemente le tue esigenze di sicurezza — tipo di attività, zona, orari..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit" id="formBtn">
+            Invia richiesta
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="8" x2="13" y2="8"/>
+              <polyline points="9,4 13,8 9,12"/>
+            </svg>
+          </button>
+        </form>
+
+        <div class="form-success-msg" id="formSuccess">
+          <div class="success-icon">✅</div>
+          <h4>Richiesta inviata!</h4>
+          <p>Ti contatteremo entro poche ore al numero indicato.<br>Grazie per aver scelto MM SecurityService.</p>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="contatti-info" data-animate data-delay="2">
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="#C9A84C" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 2C6.7 2 4 4.7 4 8c0 4.5 6 10 6 10s6-5.5 6-10c0-3.3-2.7-6-6-6z"/>
+              <circle cx="10" cy="8" r="2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="info-label">Sede</div>
+            <div class="info-value">
+              <strong>MM SecurityService</strong><br>
+              Via Marsala 1<br>
+              27029 Vigevano (PV)
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="#C9A84C" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h12c.9 0 1.6.7 1.6 1.6v8.8c0 .9-.7 1.6-1.6 1.6H4c-.9 0-1.6-.7-1.6-1.6V5.6C2.4 4.7 3.1 4 4 4z"/>
+              <polyline points="17.6,5.6 10,11.2 2.4,5.6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-value">
+              <a href="mailto:info@mmsecurityservice.it"
+                 style="color:var(--navy);font-weight:600;transition:color .2s"
+                 onmouseover="this.style.color='#C9A84C'"
+                 onmouseout="this.style.color='var(--navy)'">
+                info@mmsecurityservice.it
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="#C9A84C" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.4 2.4a1 1 0 0 0-1.4 0L3.3 4.1c-.9.9-.8 2.4.1 3.3L7 11l4 4 3.6 3.6c.9.9 2.4 1 3.3.1l1.7-1.7a1 1 0 0 0 0-1.4l-2.5-2.5a1 1 0 0 0-1.4 0l-1 1c-.4.4-1 .4-1.4 0L9.4 10.4c-.4-.4-.4-1 0-1.4l1-1a1 1 0 0 0 0-1.4L8 4.1 6.4 2.4z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="info-label">Telefono</div>
+            <div class="info-value">
+              <strong>Centrale operativa</strong><br>
+              <a href="tel:+390381000000"
+                 style="color:var(--navy);font-weight:600;transition:color .2s"
+                 onmouseover="this.style.color='#C9A84C'"
+                 onmouseout="this.style.color='var(--navy)'">
+                0381 000 000
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="badge-24h">
+          <span class="badge-24h-dot"></span>
+          <span>Centrale operativa attiva 24/7 — 365 giorni l'anno</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── LAVORA CON NOI ── -->
+<section class="lavora" id="lavora">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="section-tag">Opportunità</span>
+      <h2>Lavora con noi</h2>
+      <p>Cerchiamo professionisti seri, affidabili e motivati. Entra a far parte del team MM SecurityService.</p>
+    </div>
+    <div class="lavora-grid">
+      <div class="lavora-requisiti" data-animate data-delay="1">
+        <h3>Chi cerchiamo</h3>
+        <ul class="requisiti-list">
+          <li><span class="req-icon">✓</span> Età minima 18 anni</li>
+          <li><span class="req-icon">✓</span> Fedina penale pulita</li>
+          <li><span class="req-icon">✓</span> Buona forma fisica</li>
+          <li><span class="req-icon">✓</span> Serietà e puntualità</li>
+          <li><span class="req-icon">✓</span> Disponibilità flessibile (anche weekend e festivi)</li>
+          <li><span class="req-icon">✓</span> Patente B</li>
+        </ul>
+        <div class="lavora-benefit">
+          <h4>Cosa offriamo</h4>
+          <p>Formazione interna, contratto regolare, ambiente professionale e possibilità di crescita nel settore della sicurezza privata.</p>
+        </div>
+      </div>
+      <div class="lavora-form-wrap" data-animate data-delay="2">
+        <h3>Invia la tua candidatura</h3>
+        <form id="lavoraForm" onsubmit="submitLavora(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome e Cognome</label>
+              <input type="text" id="l-nome" placeholder="Mario Rossi" required>
+            </div>
+            <div class="form-group">
+              <label>Età</label>
+              <input type="number" id="l-eta" placeholder="25" min="18" max="65" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Telefono</label>
+            <input type="tel" id="l-tel" placeholder="+39 320 000 0000" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="l-email" placeholder="mario@esempio.it" required>
+          </div>
+          <div class="form-group">
+            <label>Esperienza nel settore sicurezza</label>
+            <select id="l-exp">
+              <option value="nessuna">Nessuna esperienza</option>
+              <option value="1-2anni">1-2 anni</option>
+              <option value="3-5anni">3-5 anni</option>
+              <option value="oltre5">Oltre 5 anni</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Presentati brevemente</label>
+            <textarea id="l-msg" placeholder="Raccontaci qualcosa di te: disponibilità, motivazione, eventuali certificazioni..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="lavoraBtn">
+            <span>Invia candidatura</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <div class="form-success-msg" id="lavoraSuccess" style="display:none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Candidatura ricevuta. Ti contatteremo presto.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container footer-inner">
+    <a href="#" class="footer-logo">
+      <img src="logo.svg" alt="MM SecurityService">
+    </a>
+
+    <ul class="footer-nav">
+      <li><a href="#chi-siamo">Chi siamo</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#perche">Perché noi</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+
+    <div class="footer-copy">© 2025 MM SecurityService · Vigevano (PV)</div>
+  </div>
+</footer>
+
+<script>
+// ── Navbar scroll ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// ── Mobile nav ──
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// ── Intersection Observer — fade-in on scroll ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+// ── Form + localStorage ──
+function submitForm(e) {
+  e.preventDefault();
+
+  const nome  = document.getElementById('f-nome').value.trim();
+  const tel   = document.getElementById('f-tel').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const msg   = document.getElementById('f-msg').value.trim();
+
+  if (!nome || !tel || !email) {
+    alert('Compila i campi obbligatori (*)');
+    return;
+  }
+
+  // Salva in localStorage
+  const lead = { nome, tel, email, msg, ts: new Date().toISOString() };
+  const leads = JSON.parse(localStorage.getItem('mmss_leads') || '[]');
+  leads.push(lead);
+  localStorage.setItem('mmss_leads', JSON.stringify(leads));
+
+  // Mostra conferma
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+function submitLavora(e) {
+  e.preventDefault();
+  const nome  = document.getElementById('l-nome').value.trim();
+  const eta   = document.getElementById('l-eta').value.trim();
+  const tel   = document.getElementById('l-tel').value.trim();
+  const email = document.getElementById('l-email').value.trim();
+  const exp   = document.getElementById('l-exp').value;
+  const msg   = document.getElementById('l-msg').value.trim();
+
+  if (!nome || !tel || !email) { alert('Compila i campi obbligatori'); return; }
+
+  const candidatura = { nome, eta, tel, email, exp, msg, ts: new Date().toISOString() };
+  const list = JSON.parse(localStorage.getItem('mmss_candidature') || '[]');
+  list.push(candidatura);
+  localStorage.setItem('mmss_candidature', JSON.stringify(list));
+
+  document.getElementById('lavoraForm').style.display = 'none';
+  document.getElementById('lavoraSuccess').style.display = 'flex';
+}
+</script>
+
+</body>
+</html>

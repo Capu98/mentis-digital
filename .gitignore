@@ -1,0 +1,11 @@
+# Netlify
+.netlify
+netlify.toml
+
+# Documenti cliente privati
+proposta-*.html
+ricevuta-*.html
+gumroad-listings.md
+
+# Zip template (distribuiti separatamente)
+*.zip

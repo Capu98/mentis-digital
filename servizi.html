@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servizi — Mentis Digital</title>
+<meta name="description" content="Mentis Digital: bot AI, automazioni, social media e consulenza digitale per PMI italiane. Scopri tutti i servizi e i prezzi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #080C18;
+  --bg2:     #0D1224;
+  --bg3:     #111829;
+  --glass:   rgba(255,255,255,.04);
+  --glass2:  rgba(255,255,255,.07);
+  --border:  rgba(255,255,255,.08);
+  --border2: rgba(255,255,255,.14);
+  --indigo:  #4F46E5;
+  --violet:  #7C3AED;
+  --pink:    #DB2777;
+  --teal:    #06B6D4;
+  --green:   #10B981;
+  --amber:   #F59E0B;
+  --text:    #E2E8F0;
+  --muted:   rgba(255,255,255,.38);
+  --white:   #FFFFFF;
+  --grad:    linear-gradient(135deg, #4F46E5, #7C3AED);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+  opacity: .018; pointer-events: none; z-index: 9990;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(8,12,24,.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: 64px; display: flex; align-items: center;
+  padding: 0 clamp(20px,5vw,80px);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo img { height: 46px; }
+.nav-back {
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  display: flex; align-items: center; gap: 6px;
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--text); }
+.nav-cta {
+  background: var(--grad); color: white;
+  font-size: 13px; font-weight: 700; padding: 9px 22px;
+  border-radius: 8px; border: none; cursor: pointer;
+  transition: opacity .2s, transform .2s;
+}
+.nav-cta:hover { opacity: .85; transform: translateY(-1px); }
+
+/* ── HERO WITH DIAGONAL CUT ── */
+.hero-srv {
+  min-height: 75vh;
+  padding: 120px clamp(20px,5vw,80px) 100px;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+  background: var(--bg2);
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+/* animated radial blobs */
+.hero-srv::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 30%, rgba(79,70,229,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 20%, rgba(124,58,237,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 60% 80%, rgba(6,182,212,.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-srv-inner {
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  position: relative; z-index: 1;
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: #A5B4FC;
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before { content: ''; width: 24px; height: 2px; background: #818CF8; }
+.hero-title {
+  font-size: clamp(42px, 6.5vw, 88px);
+  font-weight: 900; letter-spacing: -3px; line-height: 1.0;
+  margin-bottom: 28px;
+}
+.hero-title .grad-word {
+  background: linear-gradient(135deg, #818CF8 0%, #A78BFA 50%, #C084FC 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 17px; color: var(--muted); max-width: 520px;
+  line-height: 1.75; font-weight: 300; margin-bottom: 44px;
+}
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-grad {
+  background: var(--grad); color: white;
+  font-size: 14px; font-weight: 700; padding: 15px 32px;
+  border-radius: 10px; border: none; cursor: pointer;
+  transition: opacity .2s, transform .2s, box-shadow .2s;
+}
+.btn-grad:hover { opacity: .88; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(79,70,229,.35); }
+.btn-ghost-light {
+  background: rgba(255,255,255,.06); color: var(--text);
+  font-size: 14px; font-weight: 600; padding: 15px 32px;
+  border-radius: 10px; border: 1px solid var(--border2); cursor: pointer;
+  transition: all .2s;
+}
+.btn-ghost-light:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); }
+
+/* ── TAB FILTER ── */
+.filter-section {
+  padding: 60px clamp(20px,5vw,80px) 0;
+  max-width: 1200px; margin: 0 auto;
+}
+.filter-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.ftab {
+  font-size: 13px; font-weight: 600;
+  padding: 9px 22px; border-radius: 100px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--muted); cursor: pointer;
+  transition: all .25s;
+}
+.ftab:hover { border-color: var(--border2); color: var(--text); }
+.ftab.active {
+  background: var(--grad); color: white; border-color: transparent;
+  box-shadow: 0 4px 16px rgba(79,70,229,.3);
+}
+
+/* ── BENTO GRID ── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+.bento-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 32px;
+  position: relative; overflow: hidden;
+  transition: border-color .35s, background .35s, transform .35s, box-shadow .35s;
+  backdrop-filter: blur(8px);
+}
+.bento-card:hover {
+  border-color: rgba(79,70,229,.35);
+  background: rgba(79,70,229,.05);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(79,70,229,.15) inset;
+}
+
+/* WIDE card (spans 2 cols) */
+.bento-card.wide { grid-column: span 2; }
+/* TALL card (spans 2 rows) */
+.bento-card.tall { grid-row: span 2; display: flex; flex-direction: column; }
+
+/* Featured card with animated rotating border */
+.bento-card.featured {
+  background: rgba(79,70,229,.06);
+  border: none; padding: 2px;
+  transform: none;
+}
+.bento-card.featured:hover { transform: translateY(-4px); }
+.bento-card.featured::before {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: 21px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    rgba(79,70,229,.0),
+    rgba(124,58,237,.8) 20%,
+    rgba(219,39,119,.6) 40%,
+    rgba(79,70,229,.0) 60%
+  );
+  animation: rotateBorder 4s linear infinite;
+  z-index: -1;
+}
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotateBorder {
+  to { --angle: 360deg; }
+}
+.bento-card.featured .bento-inner {
+  background: var(--bg2);
+  border-radius: 18px;
+  padding: 36px 32px;
+  height: 100%;
+}
+
+/* Glowing orb in card corner */
+.bento-orb {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; opacity: .5;
+}
+
+/* ── CARD CONTENT ── */
+.card-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; padding: 4px 12px;
+  border-radius: 20px; margin-bottom: 24px;
+}
+.tag-ai     { background: rgba(79,70,229,.15); color: #A5B4FC; border: 1px solid rgba(79,70,229,.25); }
+.tag-auto   { background: rgba(6,182,212,.12); color: #67E8F9; border: 1px solid rgba(6,182,212,.2); }
+.tag-social { background: rgba(219,39,119,.12); color: #F9A8D4; border: 1px solid rgba(219,39,119,.2); }
+.tag-consult { background: rgba(16,185,129,.12); color: #6EE7B7; border: 1px solid rgba(16,185,129,.2); }
+
+.card-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.icon-ai     { background: rgba(79,70,229,.2); }
+.icon-auto   { background: rgba(6,182,212,.15); }
+.icon-social { background: rgba(219,39,119,.15); }
+.icon-consult { background: rgba(16,185,129,.15); }
+
+.card-title {
+  font-size: clamp(18px,1.8vw,22px); font-weight: 800;
+  letter-spacing: -.5px; margin-bottom: 12px; color: var(--white);
+}
+.card-desc {
+  font-size: 14px; color: var(--muted); line-height: 1.75; flex: 1;
+}
+.card-price {
+  display: flex; align-items: baseline; gap: 6px;
+  margin-top: 28px;
+}
+.price-amt {
+  font-size: 38px; font-weight: 900; letter-spacing: -2px;
+  background: var(--grad); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.price-per { font-size: 13px; color: var(--muted); font-weight: 400; }
+.card-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 20px;
+  font-size: 13px; font-weight: 700; color: #818CF8;
+  transition: gap .2s, color .2s;
+  cursor: pointer; background: none; border: none;
+}
+.card-cta:hover { gap: 12px; color: white; }
+.card-cta svg { transition: transform .2s; }
+.card-cta:hover svg { transform: translateX(3px); }
+
+/* Wide card extras */
+.wide-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px; margin-top: 28px;
+}
+.wide-feat {
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px;
+}
+.wide-feat-icon { font-size: 18px; margin-bottom: 8px; }
+.wide-feat-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.wide-feat-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* Pill list in tall card */
+.pill-list { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; flex: 1; }
+.pill-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--text); font-weight: 500;
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; }
+
+/* ── NUMBERS SECTION ── */
+.numbers {
+  padding: 80px clamp(20px,5vw,80px);
+  clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+  background: linear-gradient(135deg, rgba(79,70,229,.12), rgba(124,58,237,.08));
+  border-top: 1px solid rgba(79,70,229,.15);
+  border-bottom: 1px solid rgba(79,70,229,.15);
+  margin: 40px 0;
+}
+.numbers-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+}
+.num-box {
+  padding: 24px 20px; text-align: center;
+}
+.num-val {
+  font-size: clamp(36px,4vw,54px); font-weight: 900;
+  letter-spacing: -2px; line-height: 1;
+  background: linear-gradient(135deg, #818CF8, #C084FC);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.num-label {
+  font-size: 13px; color: var(--muted); font-weight: 500; line-height: 1.4;
+}
+
+/* ── PRICING TABLE ── */
+.pricing-section {
+  padding: 40px clamp(20px,5vw,80px) 80px;
+  max-width: 1200px; margin: 0 auto;
+}
+.pricing-section h2 {
+  font-size: clamp(28px,3.5vw,44px); font-weight: 900;
+  letter-spacing: -1.5px; margin-bottom: 10px;
+}
+.pricing-section h2 .g { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.pricing-section > p { font-size: 15px; color: var(--muted); margin-bottom: 48px; }
+
+.pricing-glass {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+.ptable {
+  width: 100%; border-collapse: collapse;
+}
+.ptable thead th {
+  padding: 20px 24px; text-align: left;
+  font-size: 13px; font-weight: 800; letter-spacing: -.3px;
+  border-bottom: 1px solid var(--border);
+}
+.ptable thead th:first-child { color: var(--muted); font-weight: 500; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+.ptable thead .th-price { font-size: 22px; font-weight: 900; color: var(--white); }
+.ptable thead .th-sub  { font-size: 12px; color: var(--muted); font-weight: 400; }
+.ptable thead .col-feat { color: #818CF8; }
+
+.ptable tbody tr { border-bottom: 1px solid rgba(255,255,255,.04); transition: background .2s; }
+.ptable tbody tr:last-child { border-bottom: none; }
+.ptable tbody tr:hover { background: rgba(255,255,255,.02); }
+.ptable tbody td { padding: 16px 24px; font-size: 13.5px; color: var(--muted); }
+.ptable tbody td:first-child { color: var(--text); font-weight: 500; }
+.pyes  { color: #6EE7B7 !important; font-weight: 600; }
+.pno   { color: rgba(255,255,255,.15) !important; }
+.pamb  { color: #FCD34D !important; }
+.plink {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--grad); color: white;
+  font-size: 13px; font-weight: 700; padding: 12px 24px;
+  border-radius: 8px; margin: 20px 24px 24px; border: none; cursor: pointer;
+  transition: opacity .2s, transform .2s;
+}
+.plink:hover { opacity: .85; transform: translateY(-1px); }
+
+/* ── FAQ ── */
+.faq-section {
+  padding: 40px clamp(20px,5vw,80px) 80px;
+  max-width: 760px; margin: 0 auto;
+}
+.faq-section h2 {
+  font-size: clamp(24px,3vw,36px); font-weight: 900; letter-spacing: -1px;
+  margin-bottom: 40px;
+}
+.faq-section h2 .g { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0; cursor: pointer; font-size: 14px; font-weight: 600;
+  gap: 20px; transition: color .2s;
+}
+.faq-q:hover { color: #A78BFA; }
+.faq-ic {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid var(--border); display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; font-size: 16px;
+  color: var(--muted); transition: all .3s;
+}
+.faq-item.open .faq-ic { background: var(--indigo); border-color: var(--indigo); color: white; transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.4,0,.2,1); }
+.faq-a-in { font-size: 14px; color: var(--muted); line-height: 1.75; padding-bottom: 20px; }
+
+/* ── CTA DIAGONAL ── */
+.cta-diag {
+  clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
+  background: linear-gradient(135deg, #3730A3, #5B21B6, #6D28D9);
+  padding: 100px clamp(20px,5vw,80px);
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-diag::before {
+  content: 'Mentis';
+  position: absolute; inset: 0;
+  font-size: clamp(100px,18vw,240px); font-weight: 900;
+  color: rgba(255,255,255,.04);
+  display: flex; align-items: center; justify-content: center;
+  letter-spacing: -6px; user-select: none;
+  pointer-events: none;
+}
+.cta-diag h2 {
+  font-size: clamp(28px,4vw,50px); font-weight: 900;
+  letter-spacing: -1.5px; color: white; margin-bottom: 14px;
+  position: relative; z-index: 1;
+}
+.cta-diag p { font-size: 16px; color: rgba(255,255,255,.65); margin-bottom: 36px; position: relative; z-index: 1; }
+.cta-diag .btn-white {
+  background: white; color: var(--indigo);
+  font-size: 14px; font-weight: 800; padding: 16px 40px;
+  border-radius: 10px; border: none; cursor: pointer;
+  transition: transform .2s, box-shadow .2s; display: inline-block;
+  position: relative; z-index: 1;
+}
+.cta-diag .btn-white:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,.3); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 40px clamp(20px,5vw,80px);
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-logo img { height: 40px; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: var(--muted); transition: color .2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 12px; color: var(--muted); }
+
+/* ── HIDDEN FILTERS ── */
+.bento-card.hidden-card {
+  display: none;
+}
+
+/* ── CONTACT MODAL ── */
+.c-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0,0,0,.8); backdrop-filter: blur(10px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.c-overlay.open { display: flex; }
+.c-modal {
+  background: #0D1224; border: 1px solid rgba(255,255,255,.14);
+  border-radius: 24px; padding: 40px 36px; width: 100%; max-width: 520px;
+  position: relative; animation: cIn .28s cubic-bezier(.4,0,.2,1);
+  max-height: 90vh; overflow-y: auto;
+}
+@keyframes cIn { from { opacity:0; transform:translateY(16px) scale(.97); } to { opacity:1; transform:none; } }
+.c-modal-x {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 50%; width: 32px; height: 32px; color: var(--muted);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: all .2s;
+}
+.c-modal-x:hover { background: rgba(255,255,255,.12); color: var(--text); }
+.c-icon { font-size: 34px; margin-bottom: 12px; }
+.c-title { font-size: 24px; font-weight: 900; letter-spacing: -.8px; margin-bottom: 6px; color: white; }
+.c-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cf-g { margin-bottom: 14px; }
+.cf-g label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 6px; }
+.cf-g input, .cf-g textarea {
+  width: 100%; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09);
+  border-radius: 10px; padding: 12px 14px; color: var(--text);
+  font-family: 'Inter', sans-serif; font-size: 14px; outline: none; transition: border-color .2s;
+}
+.cf-g input:focus, .cf-g textarea:focus { border-color: rgba(79,70,229,.6); background: rgba(79,70,229,.04); }
+.cf-g textarea { resize: vertical; min-height: 100px; }
+.cf-g input::placeholder, .cf-g textarea::placeholder { color: rgba(255,255,255,.2); }
+.cf-btn {
+  width: 100%; padding: 15px; background: linear-gradient(135deg, #4F46E5, #7C3AED); color: white;
+  font-size: 15px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer;
+  margin-top: 8px; transition: opacity .2s, transform .2s; font-family: 'Inter', sans-serif;
+}
+.cf-btn:hover { opacity: .88; transform: translateY(-1px); }
+.cf-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+.cf-ok { text-align: center; padding: 24px 0; }
+@media (max-width: 520px) {
+  .c-modal { padding: 28px 20px; }
+  .cf-row { grid-template-columns: 1fr; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .bento-grid { grid-template-columns: 1fr 1fr; }
+  .bento-card.wide { grid-column: span 2; }
+  .numbers-inner { grid-template-columns: repeat(2, 1fr); }
+  .wide-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 580px) {
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-card.wide { grid-column: span 1; }
+  .bento-card.tall { grid-row: span 1; }
+  .numbers-inner { grid-template-columns: repeat(2, 1fr); }
+  .hero-srv { clip-path: none; }
+  .cta-diag { clip-path: none; }
+  .numbers { clip-path: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">
+      ← Mentis Digital
+    </a>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.svg" alt="Mentis Digital">
+    </a>
+    <button class="nav-cta" onclick="openContact('info')">Contattaci</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-srv">
+  <div class="hero-srv-inner">
+    <div class="hero-eyebrow">Servizi &amp; Soluzioni</div>
+    <h1 class="hero-title">
+      Strumenti digitali<br>che <span class="grad-word">lavorano</span><br>per te.
+    </h1>
+    <p class="hero-sub">
+      Bot AI, automazioni, social media e consulenza concreta.
+      Soluzioni pronte in 24 ore, costruite sulle reali esigenze della tua attività.
+    </p>
+    <div class="hero-ctas">
+      <button class="btn-grad" onclick="openContact('info')">Parla con noi</button>
+      <a href="#servizi" class="btn-ghost-light">Esplora i servizi</a>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER + BENTO -->
+<div class="filter-section" id="servizi">
+  <div class="filter-tabs">
+    <button class="ftab active" onclick="filterCards('all', this)">Tutti i servizi</button>
+    <button class="ftab" onclick="filterCards('ai', this)">Bot AI</button>
+    <button class="ftab" onclick="filterCards('auto', this)">Automazioni</button>
+    <button class="ftab" onclick="filterCards('social', this)">Social Media</button>
+    <button class="ftab" onclick="filterCards('consult', this)">Consulenza</button>
+  </div>
+
+  <div class="bento-grid" id="bento">
+
+    <!-- CARD 1 — WhatsApp Bot (wide, featured) -->
+    <div class="bento-card featured wide" data-cat="ai">
+      <div class="bento-inner">
+        <div class="card-tag tag-ai">● Bot AI</div>
+        <div class="card-icon icon-ai">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#818CF8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h18c1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H7l-4 4V6c0-1.1.9-2 2-2z"/>
+            <line x1="8" y1="10" x2="18" y2="10"/><line x1="8" y1="14" x2="13" y2="14"/>
+          </svg>
+        </div>
+        <div class="card-title">Risponditore WhatsApp Business</div>
+        <div class="card-desc">Un bot intelligente che gestisce le richieste dei tuoi clienti in modo autonomo. Prenotazioni, FAQ, orari, prodotti — risposta immediata, anche di notte, senza che tu muova un dito.</div>
+        <div class="wide-grid">
+          <div class="wide-feat">
+            <div class="wide-feat-icon">⚡</div>
+            <div class="wide-feat-title">Risposta in &lt;2 secondi</div>
+            <div class="wide-feat-desc">Il bot risponde istantaneamente, giorno e notte, 365 giorni l'anno</div>
+          </div>
+          <div class="wide-feat">
+            <div class="wide-feat-icon">🎯</div>
+            <div class="wide-feat-title">Personalità su misura</div>
+            <div class="wide-feat-desc">Tono, nome, informazioni — tutto configurato sul tuo brand specifico</div>
+          </div>
+          <div class="wide-feat">
+            <div class="wide-feat-icon">📊</div>
+            <div class="wide-feat-title">Report mensile incluso</div>
+            <div class="wide-feat-desc">Domande più frequenti, orari di picco, statistiche conversazioni</div>
+          </div>
+          <div class="wide-feat">
+            <div class="wide-feat-icon">🔧</div>
+            <div class="wide-feat-title">Setup in 24 ore</div>
+            <div class="wide-feat-desc">Dal primo contatto al bot attivo: al massimo un giorno lavorativo</div>
+          </div>
+        </div>
+        <div class="card-price">
+          <span class="price-amt" style="background:linear-gradient(135deg,#818CF8,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">99</span>
+          <span class="price-per">€/mese · Piano Pro · nessun contratto</span>
+        </div>
+        <a href="https://botready-mentis.netlify.app" target="_blank" class="card-cta">
+          Vai su BotReady
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- CARD 2 — Automazioni (tall) -->
+    <div class="bento-card tall" data-cat="auto">
+      <div class="card-tag tag-auto">⟳ Automazioni</div>
+      <div class="card-icon icon-auto">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#67E8F9" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="13" cy="13" r="9"/><path d="M9 13h4l2-4"/>
+          <circle cx="13" cy="13" r="2" fill="#67E8F9"/>
+        </svg>
+      </div>
+      <div class="card-title">Automazioni su misura</div>
+      <div class="card-desc">Workflow personalizzati che collegano i tuoi strumenti. Promemoria, notifiche, integrazioni con gestionali. Lo imposti una volta, lavora per sempre.</div>
+      <div class="pill-list">
+        <div class="pill-item"><span class="pill-dot" style="background:#67E8F9"></span>Promemoria prenotazioni automatici</div>
+        <div class="pill-item"><span class="pill-dot" style="background:#67E8F9"></span>Notifiche su WhatsApp o email</div>
+        <div class="pill-item"><span class="pill-dot" style="background:#67E8F9"></span>Integrazione con Google Calendar</div>
+        <div class="pill-item"><span class="pill-dot" style="background:#67E8F9"></span>Sync con gestionali esistenti</div>
+        <div class="pill-item"><span class="pill-dot" style="background:#67E8F9"></span>Dashboard di monitoraggio</div>
+      </div>
+      <div class="card-price">
+        <span class="price-amt" style="background:linear-gradient(135deg,#67E8F9,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Su</span>
+        <span class="price-per">preventivo · in base alla complessità</span>
+      </div>
+      <button class="card-cta" onclick="openContact('preventivo')">
+        Richiedi preventivo
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#67E8F9" stroke-width="2" stroke-linecap="round"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/></svg>
+      </button>
+    </div>
+
+    <!-- CARD 3 — Social Media (normal) -->
+    <div class="bento-card" data-cat="social">
+      <div class="card-tag tag-social">📱 Social Media</div>
+      <div class="card-icon icon-social">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#F9A8D4" stroke-width="1.8" stroke-linecap="round">
+          <rect x="4" y="4" width="8" height="8" rx="2"/><rect x="14" y="4" width="8" height="8" rx="2"/>
+          <rect x="4" y="14" width="8" height="8" rx="2"/>
+          <rect x="14" y="14" width="4" height="4" rx="1"/><rect x="18" y="18" width="4" height="4" rx="1"/>
+        </svg>
+      </div>
+      <div class="card-title">Gestione Social Media AI</div>
+      <div class="card-desc">Post professionali ogni settimana su Instagram e Facebook, creati con AI e ottimizzati per il tuo settore. Tu non muovi un dito.</div>
+      <div class="card-price">
+        <span class="price-amt" style="background:linear-gradient(135deg,#F9A8D4,#DB2777);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">200</span>
+        <span class="price-per">€/mese · IVA inclusa</span>
+      </div>
+      <a href="https://botsocial-mentis.netlify.app" target="_blank" class="card-cta" style="color:#F9A8D4">
+        Vai su BotSocial
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#F9A8D4" stroke-width="2" stroke-linecap="round"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/></svg>
+      </a>
+    </div>
+
+    <!-- CARD 4 — Consulenza (normal) -->
+    <div class="bento-card" data-cat="consult">
+      <div class="card-tag tag-consult">💡 Consulenza</div>
+      <div class="card-icon icon-consult">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round">
+          <path d="M13 3C7.5 3 3 7.5 3 13s4.5 10 10 10 10-4.5 10-10S18.5 3 13 3z"/>
+          <path d="M10 9.5c0-1.7 1.3-3 3-3s3 1.3 3 3c0 2-3 3.5-3 3.5"/>
+          <circle cx="13" cy="17.5" r="1" fill="#6EE7B7"/>
+        </svg>
+      </div>
+      <div class="card-title">Consulenza Digitale</div>
+      <div class="card-desc">Analisi delle opportunità digitali per la tua attività, piano d'azione concreto e supporto nell'implementazione. Dici dove vuoi arrivare, ci pensiamo noi.</div>
+      <div class="card-price">
+        <span class="price-amt" style="background:linear-gradient(135deg,#6EE7B7,#10B981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Free</span>
+        <span class="price-per">prima call di 30 min senza impegno</span>
+      </div>
+      <button class="card-cta" style="color:#6EE7B7" onclick="openContact('call')">
+        Prenota una call
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/></svg>
+      </button>
+    </div>
+
+    <!-- CARD 5 — Sito web (wide) -->
+    <div class="bento-card wide" data-cat="consult">
+      <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px">
+          <div class="card-tag tag-consult">🌐 Web</div>
+          <div class="card-title">Siti web professionali</div>
+          <div class="card-desc">Landing page e siti vetrina ottimizzati per conversione. Design unico, responsive, SEO-ready. Dal concept al live in 5 giorni lavorativi.</div>
+          <div class="card-price">
+            <span class="price-amt" style="font-size:28px;background:linear-gradient(135deg,#6EE7B7,#818CF8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Da €390</span>
+            <span class="price-per">una tantum · hosting non incluso</span>
+          </div>
+          <button class="card-cta" style="color:#6EE7B7;margin-top:12px" onclick="openContact('info')">
+            Richiedi info
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/></svg>
+          </button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;flex:1;min-width:200px">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px">
+            <span style="color:#6EE7B7;font-size:16px">✓</span>
+            <span style="font-size:13px;color:var(--text)">Design custom — mai template generici</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px">
+            <span style="color:#6EE7B7;font-size:16px">✓</span>
+            <span style="font-size:13px;color:var(--text)">Mobile-first · Core Web Vitals ottimizzati</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px">
+            <span style="color:#6EE7B7;font-size:16px">✓</span>
+            <span style="font-size:13px;color:var(--text)">Live in 5 giorni lavorativi</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px">
+            <span style="color:#6EE7B7;font-size:16px">✓</span>
+            <span style="font-size:13px;color:var(--text)">Modifiche illimitate nei primi 14 giorni</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- NUMERI -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <div class="num-box">
+      <div class="num-val" data-count="24">0</div>
+      <div class="num-label">ore per il setup<br>dal primo contatto</div>
+    </div>
+    <div class="num-box">
+      <div class="num-val">99.9%</div>
+      <div class="num-label">uptime garantito<br>per i bot attivi</div>
+    </div>
+    <div class="num-box">
+      <div class="num-val">€0</div>
+      <div class="num-label">costi per disdire<br>in qualsiasi momento</div>
+    </div>
+    <div class="num-box">
+      <div class="num-val" data-count="30">0</div>
+      <div class="num-label">minuti di call<br>gratuita per iniziare</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING TABLE -->
+<div class="pricing-section">
+  <h2>Confronto servizi,<br><span class="g">riga per riga.</span></h2>
+  <p>Cosa include ogni soluzione e quanto costa davvero.</p>
+
+  <div class="pricing-glass">
+    <table class="ptable">
+      <thead>
+        <tr>
+          <th>Servizio</th>
+          <th class="col-feat">
+            <div class="th-price">Bot WhatsApp</div>
+            <div class="th-sub">da €49/mese</div>
+          </th>
+          <th>
+            <div class="th-price" style="background:linear-gradient(135deg,#F9A8D4,#DB2777);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Social Media</div>
+            <div class="th-sub">€200/mese</div>
+          </th>
+          <th>
+            <div class="th-price" style="color:#6EE7B7">Consulenza</div>
+            <div class="th-sub">su preventivo</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Setup iniziale</td><td class="pyes">Gratuito</td><td class="pyes">Gratuito</td><td class="pyes">Call gratuita</td></tr>
+        <tr><td>Contratto minimo</td><td class="pyes">Nessuno</td><td class="pyes">Nessuno</td><td class="pyes">Nessuno</td></tr>
+        <tr><td>Tempo attivazione</td><td class="pyes">24-48 ore</td><td class="pyes">48 ore</td><td class="pamb">Variabile</td></tr>
+        <tr><td>Report incluso</td><td class="pyes">Mensile</td><td class="pyes">Mensile</td><td class="pno">—</td></tr>
+        <tr><td>Disponibilità 24/7</td><td class="pyes">Bot sempre attivo</td><td class="pno">—</td><td class="pno">—</td></tr>
+        <tr><td>Canali supportati</td><td>WhatsApp + Telegram</td><td>Instagram + Facebook</td><td class="pamb">Tutti</td></tr>
+        <tr><td>Personalizzazione</td><td class="pyes">Completa</td><td class="pyes">Completa</td><td class="pyes">Su misura</td></tr>
+        <tr><td>Supporto</td><td>Email / WhatsApp</td><td>WhatsApp</td><td class="pyes">Dedicato</td></tr>
+      </tbody>
+    </table>
+    <button class="plink" onclick="openContact('info')">Parla con noi →</button>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <h2>Domande <span class="g">frequenti.</span></h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="faq(this)">Posso avere più servizi insieme?
+      <span class="faq-ic">+</span></div>
+    <div class="faq-a"><div class="faq-a-in">Sì. Molti clienti usano Bot WhatsApp + Social Media insieme — e in quel caso offriamo un piccolo sconto sulla combinazione. Scrivici e te lo diciamo.</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faq(this)">Quanto durano i contratti?
+      <span class="faq-ic">+</span></div>
+    <div class="faq-a"><div class="faq-a-in">Zero. Lavoriamo mese per mese su tutti i servizi. Cancelli con un messaggio, senza preavviso e senza costi aggiuntivi.</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faq(this)">Avete esperienza con il mio settore?
+      <span class="faq-ic">+</span></div>
+    <div class="faq-a"><div class="faq-a-in">Lavoriamo principalmente con ristoranti, bar, negozi, studi professionali e PMI locali. Ma siamo abituati ad adattarci — la prima call è gratuita proprio per capire se possiamo aiutarti.</div></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="faq(this)">Devo avere competenze tecniche?
+      <span class="faq-ic">+</span></div>
+    <div class="faq-a"><div class="faq-a-in">No. Ci occupiamo di tutto noi. Il tuo compito è dirci cosa vuoi ottenere — al resto pensiamo noi.</div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-diag">
+  <h2>Pronto a iniziare?</h2>
+  <p>Prima call di 30 minuti gratuita — senza impegno, senza tecnicismi.</p>
+  <button class="btn-white" onclick="openContact('call')">Scrivici ora →</button>
+</div>
+
+<!-- CONTACT MODAL -->
+<div class="c-overlay" id="cOverlay" onclick="if(event.target===this)closeContact()">
+  <div class="c-modal">
+    <button class="c-modal-x" onclick="closeContact()">✕</button>
+
+    <div id="cFormWrap">
+      <div class="c-icon" id="cIcon">📞</div>
+      <h2 class="c-title" id="cTitle">Prenota una call</h2>
+      <p class="c-sub" id="cSub">Prima call di 30 minuti gratuita — senza impegno, senza tecnicismi.</p>
+
+      <form id="cForm" name="contatto-mentis" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleContact(event)">
+        <input type="hidden" name="form-name" value="contatto-mentis">
+        <input type="hidden" name="tipo" id="cTipo" value="call">
+        <p style="display:none"><label>Non compilare: <input name="bot-field"></label></p>
+
+        <div class="cf-row">
+          <div class="cf-g">
+            <label>Nome *</label>
+            <input type="text" name="nome" placeholder="Mario Rossi" required>
+          </div>
+          <div class="cf-g">
+            <label>Email *</label>
+            <input type="email" name="email" placeholder="mario@esempio.it" required>
+          </div>
+        </div>
+
+        <div class="cf-g">
+          <label>Telefono</label>
+          <input type="tel" name="telefono" placeholder="+39 333 1234567">
+        </div>
+
+        <div class="cf-g">
+          <label>Messaggio</label>
+          <textarea name="messaggio" rows="4" placeholder="Descrivi brevemente la tua attività e cosa ti serve..."></textarea>
+        </div>
+
+        <button type="submit" class="cf-btn" id="cBtn">Invia richiesta →</button>
+      </form>
+    </div>
+
+    <div id="cOk" style="display:none" class="cf-ok">
+      <div style="font-size:56px;margin-bottom:16px">✅</div>
+      <div style="font-size:22px;font-weight:900;letter-spacing:-.5px;color:white;margin-bottom:10px">Richiesta inviata!</div>
+      <div style="color:var(--muted);font-size:14px;line-height:1.7">Ti risponderemo entro <strong style="color:white">24 ore</strong>.<br>Controlla anche la cartella spam.</div>
+      <button onclick="closeContact()" class="cf-btn" style="margin-top:28px">Chiudi</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo"><img src="logo.svg" alt="Mentis Digital"></a>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="https://botready-mentis.netlify.app" target="_blank" style="color:#818CF8">BotReady</a>
+      <a href="https://botsocial-mentis.netlify.app" target="_blank" style="color:#F9A8D4">BotSocial</a>
+      <a href="mailto:mentis.ai.outreach@gmail.com">Contatti</a>
+    </nav>
+    <div class="footer-copy">© 2026 Mentis Digital — Tutti i diritti riservati</div>
+  </div>
+</footer>
+
+<script>
+/* ── SCROLL PROGRESS ── */
+window.addEventListener('scroll',()=>{});
+
+/* ── TAB FILTER ── */
+function filterCards(cat, btn){
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.bento-card').forEach(card=>{
+    if(cat==='all' || card.dataset.cat===cat){
+      card.classList.remove('hidden-card');
+    } else {
+      card.classList.add('hidden-card');
+    }
+  });
+}
+
+/* ── FAQ ── */
+function faq(btn){
+  const item=btn.parentElement;
+  const a=item.querySelector('.faq-a');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>{
+    i.classList.remove('open');
+    i.querySelector('.faq-a').style.maxHeight='0';
+  });
+  if(!open){ item.classList.add('open'); a.style.maxHeight=a.scrollHeight+'px'; }
+}
+
+/* ── CONTACT MODAL ── */
+const CONTACT_CFG = {
+  call:       { icon:'📞', title:'Prenota una call',       sub:'Prima call di 30 minuti gratuita — senza impegno, senza tecnicismi.' },
+  preventivo: { icon:'📋', title:'Richiedi un preventivo', sub:'Descrivici il progetto. Ti mandiamo un preventivo dettagliato entro 24 ore.' },
+  info:       { icon:'💬', title:'Richiedi informazioni',  sub:'Hai domande su uno dei nostri servizi? Siamo qui per risponderti.' },
+};
+function openContact(tipo) {
+  const c = CONTACT_CFG[tipo] || CONTACT_CFG.info;
+  document.getElementById('cIcon').textContent  = c.icon;
+  document.getElementById('cTitle').textContent = c.title;
+  document.getElementById('cSub').textContent   = c.sub;
+  document.getElementById('cTipo').value        = tipo;
+  document.getElementById('cFormWrap').style.display = '';
+  document.getElementById('cOk').style.display       = 'none';
+  document.getElementById('cBtn').disabled           = false;
+  document.getElementById('cBtn').textContent        = 'Invia richiesta →';
+  document.getElementById('cForm').reset();
+  document.getElementById('cTipo').value = tipo; // reset svuota hidden, rimetti
+  document.getElementById('cOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeContact() {
+  document.getElementById('cOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+async function handleContact(e) {
+  e.preventDefault();
+  const btn  = document.getElementById('cBtn');
+  const form = document.getElementById('cForm');
+  btn.disabled    = true;
+  btn.textContent = 'Invio in corso...';
+  const data = new FormData(form);
+
+  // In locale (file://) non si può inviare a Netlify — mostra successo UI direttamente
+  if (window.location.protocol === 'file:') {
+    document.getElementById('cFormWrap').style.display = 'none';
+    document.getElementById('cOk').style.display       = '';
+    return;
+  }
+
+  try {
+    const res = await fetch(window.location.pathname || '/', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body:    new URLSearchParams(data).toString()
+    });
+    if (res.ok) {
+      document.getElementById('cFormWrap').style.display = 'none';
+      document.getElementById('cOk').style.display       = '';
+    } else {
+      btn.disabled    = false;
+      btn.textContent = 'Invia richiesta →';
+      document.getElementById('cSub').innerHTML = '⚠️ Errore nell\'invio. Scrivi direttamente a <a href="mailto:mentis.ai.outreach@gmail.com" style="color:#818CF8">mentis.ai.outreach@gmail.com</a>';
+    }
+  } catch {
+    btn.disabled    = false;
+    btn.textContent = 'Invia richiesta →';
+    document.getElementById('cSub').innerHTML = '⚠️ Errore di connessione. Scrivi a <a href="mailto:mentis.ai.outreach@gmail.com" style="color:#818CF8">mentis.ai.outreach@gmail.com</a>';
+  }
+}
+
+/* ── COUNTER ANIMATION ── */
+const counters = document.querySelectorAll('[data-count]');
+const cObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target; const target=+el.dataset.count;
+      let current=0;
+      const step=target/40;
+      const t=setInterval(()=>{
+        current=Math.min(current+step, target);
+        el.textContent=Math.round(current)+(target===24?'h':'');
+        if(current>=target) clearInterval(t);
+      }, 35);
+      cObs.unobserve(el);
+    }
+  });
+},{threshold:.5});
+counters.forEach(c=>cObs.observe(c));
+</script>
+</body>
+</html>

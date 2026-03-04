@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BotReady — Risponde per te su WhatsApp. Pronto in 24 ore.</title>
+<meta name="description" content="BotReady risponde alle prenotazioni su WhatsApp per ristoranti, studi e negozi italiani. Riduce i no-show, libera il tuo tempo. Setup in 24 ore, da €49/mese.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg:      #07090f;
+  --bg2:     #0c1120;
+  --bg3:     #111827;
+  --border:  #1a2540;
+  --teal:    #00d4b4;
+  --teal2:   #00a896;
+  --green:   #10d48e;
+  --amber:   #f59e0b;
+  --red:     #f43f5e;
+  --text:    #e2ecf5;
+  --muted:   #5a7090;
+  --white:   #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(7,9,15,.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(26,37,64,.6);
+  height: 64px;
+  display: flex; align-items: center;
+  padding: 0 clamp(20px, 5vw, 80px);
+}
+
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
+  color: var(--white);
+}
+
+.nav-logo-dot { color: var(--teal); }
+
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px; color: var(--muted); transition: color .2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  background: var(--teal);
+  color: #07090f;
+  font-size: 13px; font-weight: 700;
+  padding: 9px 22px; border-radius: 8px;
+  transition: all .2s;
+}
+.nav-cta:hover { background: var(--green); transform: translateY(-1px); }
+
+/* ── SECTIONS ── */
+section { padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 80px); }
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0,212,180,.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(16,212,142,.04) 0%, transparent 45%),
+    var(--bg);
+  padding-top: 120px;
+}
+
+.hero-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,212,180,.08); border: 1px solid rgba(0,212,180,.2);
+  color: var(--teal); font-size: 12px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 20px; margin-bottom: 28px;
+}
+
+.hero-tag-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+.hero-title {
+  font-size: clamp(38px, 5vw, 62px);
+  font-weight: 900; letter-spacing: -2px; line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.hero-title .accent {
+  background: linear-gradient(135deg, var(--teal), var(--green));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 18px; color: var(--muted); line-height: 1.7;
+  margin-bottom: 40px; font-weight: 300; max-width: 480px;
+}
+
+.hero-actions { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; flex-wrap: wrap; }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--teal), var(--teal2));
+  color: #07090f; font-weight: 700; font-size: 15px;
+  padding: 14px 32px; border-radius: 10px; border: none;
+  cursor: pointer; transition: all .2s; font-family: inherit;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,180,.25); }
+
+.btn-ghost {
+  color: var(--muted); font-size: 14px; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: color .2s;
+}
+.btn-ghost:hover { color: var(--text); }
+
+.hero-trust {
+  display: flex; align-items: center; gap: 24px;
+}
+
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--muted);
+}
+
+.trust-icon { color: var(--teal); font-size: 16px; }
+
+/* ── HERO VISUAL ── */
+.hero-visual { position: relative; }
+
+.chat-mockup {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,.4);
+}
+
+.chat-header-mock {
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+
+.chat-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--green));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+
+.chat-name { font-size: 14px; font-weight: 600; }
+.chat-status { font-size: 11px; color: var(--teal); }
+
+.chat-status-dot {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--green); border-radius: 50;
+  margin-right: 4px;
+}
+
+.chat-body { padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+
+.chat-msg {
+  max-width: 80%; padding: 10px 14px; border-radius: 12px;
+  font-size: 13px; line-height: 1.5;
+  animation: fadeIn .3s ease;
+}
+@keyframes fadeIn { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:translateY(0)} }
+
+.chat-msg.incoming {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 4px 12px 12px 12px; align-self: flex-start;
+}
+
+.chat-msg.outgoing {
+  background: rgba(0,212,180,.1); border: 1px solid rgba(0,212,180,.2);
+  border-radius: 12px 4px 12px 12px; align-self: flex-end;
+}
+
+.chat-msg-time { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+.chat-typing {
+  display: flex; gap: 4px; padding: 10px 14px;
+  background: var(--bg3); border-radius: 4px 12px 12px 12px;
+  width: 56px; align-self: flex-start;
+}
+.chat-typing span {
+  width: 5px; height: 5px; background: var(--muted); border-radius: 50%;
+  animation: bounce .9s infinite;
+}
+.chat-typing span:nth-child(2) { animation-delay: .15s; }
+.chat-typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+
+.chat-input-bar {
+  border-top: 1px solid var(--border);
+  padding: 12px 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.chat-input-fake {
+  flex: 1; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 20px; padding: 8px 16px; font-size: 12px; color: var(--muted);
+}
+
+.floating-badge {
+  position: absolute;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 10px 14px;
+  font-size: 12px; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  white-space: nowrap;
+}
+.fb-1 { top: -20px; right: -20px; }
+.fb-2 { bottom: 30px; left: -30px; }
+.fb-icon { font-size: 18px; }
+
+/* ── SECTION HEADERS ── */
+.s-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.s-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.s-title .t { color: var(--teal); }
+.s-sub {
+  font-size: 17px; color: var(--muted); font-weight: 300;
+  max-width: 560px; line-height: 1.7; margin-bottom: 56px;
+}
+
+/* ── PAIN POINTS ── */
+.pain {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+}
+
+.pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+
+.pain-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px;
+  transition: border-color .2s, transform .2s;
+}
+.pain-card:hover { border-color: rgba(0,212,180,.3); transform: translateY(-4px); }
+
+.pain-emoji { font-size: 36px; margin-bottom: 16px; }
+.pain-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.pain-text  { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+.pain-quote {
+  margin-top: 12px; padding: 10px 14px;
+  background: rgba(244,63,94,.06); border-left: 2px solid var(--red);
+  font-size: 12px; color: #f9a8b8; border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+.pain-narrative {
+  max-width: 720px; margin-bottom: 52px;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 14px 14px 0; padding: 28px 32px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.pain-narrative p { font-size: 16px; color: var(--text); line-height: 1.75; }
+.pain-narrative em { color: var(--teal); font-style: normal; font-weight: 500; }
+
+/* ── HOW IT WORKS ── */
+.how { background: var(--bg2); }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative; }
+
+.steps::before {
+  content: '';
+  position: absolute; top: 40px; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(90deg, var(--teal), var(--green));
+  opacity: .3;
+}
+
+.step { text-align: center; padding: 0 16px; }
+
+.step-num {
+  width: 80px; height: 80px; margin: 0 auto 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0,212,180,.12), rgba(16,212,142,.06));
+  border: 1px solid rgba(0,212,180,.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; position: relative; z-index: 1;
+}
+
+.step-n {
+  position: absolute; top: -4px; right: -4px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--teal); color: #07090f;
+  font-size: 11px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.step-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.step-text  { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ── FEATURES ── */
+.feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.feat-item {
+  display: flex; gap: 16px; padding: 20px;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 14px; transition: border-color .2s;
+}
+.feat-item:hover { border-color: rgba(0,212,180,.25); }
+
+.feat-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(0,212,180,.08); border: 1px solid rgba(0,212,180,.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+
+.feat-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.feat-text  { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ── PRICING ── */
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+.plan {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 20px; padding: 36px 28px;
+  position: relative; transition: transform .2s;
+}
+.plan:hover { transform: translateY(-4px); }
+
+.plan.featured {
+  border-color: var(--teal);
+  background: linear-gradient(160deg, rgba(0,212,180,.07), var(--bg2));
+  box-shadow: 0 0 40px rgba(0,212,180,.08);
+}
+
+.plan-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--teal), var(--green));
+  color: #07090f; font-size: 11px; font-weight: 800;
+  padding: 4px 16px; border-radius: 20px; letter-spacing: .5px;
+  text-transform: uppercase; white-space: nowrap;
+}
+
+.plan-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
+
+.plan-price {
+  font-size: 52px; font-weight: 900; letter-spacing: -2px;
+  margin: 10px 0 4px; line-height: 1;
+  background: linear-gradient(135deg, var(--white), var(--teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.plan-period { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+
+.plan-cta {
+  width: 100%; padding: 12px; border-radius: 10px; border: none;
+  font-family: inherit; font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: all .2s; margin-bottom: 24px;
+}
+
+.plan-cta-primary { background: var(--teal); color: #07090f; }
+.plan-cta-primary:hover { background: var(--green); transform: translateY(-1px); }
+
+.plan-cta-ghost {
+  background: transparent; border: 1px solid var(--border); color: var(--text);
+}
+.plan-cta-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+.plan-features { list-style: none; }
+.plan-features li {
+  padding: 8px 0; font-size: 13px; color: var(--muted);
+  border-bottom: 1px solid rgba(26,37,64,.5);
+  display: flex; align-items: center; gap: 10px;
+}
+.plan-features li:last-child { border-bottom: none; }
+.plan-features .check { color: var(--teal); font-size: 14px; font-weight: 700; flex-shrink: 0; }
+.plan-features .x    { color: var(--muted); opacity: .4; flex-shrink: 0; }
+
+/* ── TESTIMONIALS ── */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+.review {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px;
+}
+
+.review-stars { color: var(--amber); font-size: 15px; margin-bottom: 14px; }
+
+.review-text {
+  font-size: 14px; color: var(--text); line-height: 1.7;
+  font-style: italic; margin-bottom: 20px;
+}
+
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--green));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+
+.review-name    { font-size: 13px; font-weight: 600; }
+.review-biz     { font-size: 11px; color: var(--muted); }
+
+/* ── FAQ ── */
+.faq { background: var(--bg2); }
+.faq-list { max-width: 780px; }
+
+.faq-item {
+  border-bottom: 1px solid var(--border); overflow: hidden;
+}
+
+.faq-question {
+  width: 100%; background: none; border: none; color: var(--text);
+  font-family: inherit; font-size: 15px; font-weight: 600;
+  text-align: left; padding: 22px 0;
+  cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; transition: color .2s;
+}
+.faq-question:hover { color: var(--teal); }
+
+.faq-chevron {
+  flex-shrink: 0; font-size: 18px; color: var(--muted);
+  transition: transform .3s;
+}
+.faq-item.open .faq-chevron { transform: rotate(45deg); color: var(--teal); }
+
+.faq-answer {
+  max-height: 0; overflow: hidden; transition: max-height .35s ease;
+}
+.faq-answer-inner {
+  padding-bottom: 20px; font-size: 14px; color: var(--muted); line-height: 1.75;
+}
+.faq-item.open .faq-answer { max-height: 300px; }
+
+/* ── FINAL CTA ── */
+.final-cta {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(0,212,180,.07) 0%, transparent 65%),
+    var(--bg);
+  text-align: center;
+}
+
+.final-cta .s-title { font-size: clamp(32px, 5vw, 60px); max-width: 700px; margin: 0 auto 16px; }
+.final-cta .s-sub   { margin: 0 auto 40px; }
+
+.urgency-tag {
+  display: inline-block;
+  background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.25);
+  color: var(--amber); font-size: 13px; font-weight: 600;
+  padding: 7px 18px; border-radius: 20px; margin-bottom: 32px;
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(7,9,15,.85); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 24px; padding: 40px; width: 100%; max-width: 540px;
+  max-height: 90vh; overflow-y: auto;
+  animation: slideUp .3s ease;
+}
+@keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+.modal h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+.modal p  { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+
+.form-row { margin-bottom: 16px; }
+.form-row label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
+
+.form-row input, .form-row select, .form-row textarea {
+  width: 100%; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; color: var(--text);
+  font-family: inherit; font-size: 14px; outline: none; transition: border-color .2s;
+}
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--teal); }
+.form-row select { appearance: none; cursor: pointer; }
+.form-row textarea { resize: vertical; min-height: 80px; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.modal-cta {
+  width: 100%; padding: 14px; margin-top: 8px;
+  background: linear-gradient(135deg, var(--teal), var(--teal2));
+  color: #07090f; font-weight: 800; font-size: 15px;
+  border: none; border-radius: 12px; cursor: pointer; font-family: inherit;
+  transition: all .2s;
+}
+.modal-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,212,180,.2); }
+.modal-cta:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--muted); width: 32px; height: 32px; border-radius: 50%;
+  font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+}
+.modal-close:hover { color: var(--text); border-color: var(--teal); }
+
+.modal-relative { position: relative; }
+
+.form-success {
+  text-align: center; padding: 20px 0; display: none;
+}
+.form-success .success-icon { font-size: 48px; margin-bottom: 16px; }
+.form-success h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.form-success p  { font-size: 14px; color: var(--muted); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 40px clamp(20px, 5vw, 80px);
+}
+
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+
+.footer-logo { font-size: 18px; font-weight: 800; }
+.footer-logo span { color: var(--teal); }
+
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(--muted); transition: color .2s; }
+.footer-links a:hover { color: var(--text); }
+
+.footer-copy { font-size: 12px; color: var(--muted); }
+
+/* ── ROI ── */
+.roi-section { background: var(--bg2); }
+
+.roi-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+}
+
+.roi-stat {
+  text-align: center; padding: 36px 20px;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 16px; transition: border-color .2s, transform .2s;
+}
+.roi-stat:hover { border-color: rgba(0,212,180,.3); transform: translateY(-4px); }
+
+.roi-num {
+  font-size: clamp(30px, 3.5vw, 46px); font-weight: 900;
+  letter-spacing: -1.5px; line-height: 1.1;
+  background: linear-gradient(135deg, var(--teal), var(--green));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 10px;
+}
+
+.roi-label { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+@media (max-width: 900px) { .roi-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── DEMO INTERATTIVA ── */
+.demo-section { background: var(--bg); }
+
+.demo-tabs {
+  display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;
+}
+
+.demo-tab-btn {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 24px;
+  color: var(--muted); font-family: inherit; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all .2s;
+}
+.demo-tab-btn:hover { border-color: rgba(0,212,180,.3); color: var(--text); }
+.demo-tab-btn.active {
+  border-color: var(--teal); color: var(--teal);
+  background: rgba(0,212,180,.08);
+}
+
+.demo-chat-card {
+  max-width: 500px; margin: 0 auto;
+  background: var(--bg2); border: 1px solid var(--teal);
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 0 48px rgba(0,212,180,.09);
+}
+
+.demo-chat-header {
+  background: var(--bg3); border-bottom: 1px solid var(--border);
+  padding: 14px 18px; display: flex; align-items: center; gap: 12px;
+}
+
+.demo-chat-body {
+  padding: 18px; display: flex; flex-direction: column; gap: 10px;
+  min-height: 260px; max-height: 370px; overflow-y: auto;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-inner  { grid-template-columns: 1fr; gap: 48px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .steps::before { display: none; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 600px) {
+  .pain-grid   { grid-template-columns: 1fr; }
+  .form-grid   { grid-template-columns: 1fr; }
+  .hero-trust  { flex-direction: column; gap: 12px; }
+  .floating-badge { display: none; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+
+/* ── HERO 3D UPGRADE ── */
+
+/* Canvas particelle di sfondo */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+/* Il canvas vive dentro .hero che deve essere positioned */
+.hero { position: relative; overflow: hidden; }
+.hero-inner { position: relative; z-index: 1; }
+
+/* Tilt 3D: il container visuale */
+.hero-visual {
+  will-change: transform;
+  /* la prospettiva viene iniettata via JS con perspective() nel transform */
+  transition: transform 0.05s linear;
+}
+
+/* Chat mockup: glow teal al tilt */
+.chat-mockup {
+  transition: box-shadow 0.35s ease;
+}
+.hero-visual.tilting .chat-mockup {
+  box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 0 56px rgba(0,212,180,.18), 0 0 12px rgba(0,212,180,.08) inset;
+}
+
+/* Floating badges: animazione flottante loop */
+.fb-1 {
+  animation: heroBadgeUp 4.4s ease-in-out infinite;
+}
+.fb-2 {
+  animation: heroBadgeDown 5.2s ease-in-out infinite;
+}
+@keyframes heroBadgeUp {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes heroBadgeDown {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(10px); }
+}
+
+/* Linea di scansione sottile sul chat mockup (effetto tech) */
+.chat-mockup {
+  position: relative;
+  overflow: hidden;
+}
+.chat-mockup::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,180,.4), transparent);
+  top: -2px;
+  animation: scanLine 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes scanLine {
+  0%   { top: -2px;   opacity: 0; }
+  5%   { opacity: 1;              }
+  95%  { opacity: 1;              }
+  100% { top: 102%;  opacity: 0; }
+}
+
+/* ── GSAP ENTRANCE PREP ── */
+/* Hero elements nascosti: GSAP li rivela con stagger */
+.hero-tag, .hero-title, .hero-sub, .hero-actions, .hero-trust {
+  opacity: 0;
+}
+/* Visual nascosta: solo opacity, non tocco il transform (tilt lo usa) */
+.hero-visual { opacity: 0; }
+
+/* ── NAV PROGRESS BAR ── */
+.nav-progress-bar {
+  position: absolute; bottom: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--teal), var(--green));
+  width: 0%;
+  pointer-events: none;
+  z-index: 1;
+  /* no transition: aggiornata via JS su scroll */
+}
+
+/* ── MOBILE: canvas più leggero, hero padding ridotto ── */
+@media (max-width: 768px) {
+  #hero-canvas { opacity: 0.2; }
+  .hero { padding-top: 90px; padding-bottom: 60px; min-height: auto; }
+  .hero-title { font-size: clamp(30px, 8vw, 44px); letter-spacing: -1.5px; }
+}
+
+/* ── REDUCED MOTION fallback ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-tag, .hero-title, .hero-sub, .hero-actions, .hero-trust, .hero-visual {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-progress-bar" id="navProgressBar"></div>
+  <div class="nav-inner">
+    <div class="nav-logo">Bot<span class="nav-logo-dot">Ready</span></div>
+    <ul class="nav-links">
+      <li><a href="#come-funziona">Come funziona</a></li>
+      <li><a href="#prezzi">Prezzi</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="nav-cta" href="#" onclick="openModal(); return false;">Prova gratis →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Canvas particelle: sfondo tech animato -->
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero-inner container">
+    <!-- Left -->
+    <div>
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        Disponibile 24 ore su 24, 7 giorni su 7
+      </div>
+
+      <h1 class="hero-title">
+        Quel tavolo da 8<br>
+        che non si presenta<br>
+        <span class="accent">costa 200€. Ogni sabato.</span>
+      </h1>
+
+      <p class="hero-sub">
+        BotReady risponde alle prenotazioni su WhatsApp per te — manda i promemoria, riduce i no-show, libera te dai messaggi durante il servizio.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openModal()">
+          Prova gratis — 14 giorni inclusi →
+        </button>
+        <a class="btn-ghost" href="#come-funziona">
+          ▶ Come funziona
+        </a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          Setup in 24 ore
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          Nessun contratto
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          Cancelli quando vuoi
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Chat mockup -->
+    <div class="hero-visual">
+      <div class="floating-badge fb-1">
+        <span class="fb-icon">⚡</span>
+        Risposta in &lt; 2 secondi
+      </div>
+
+      <div class="chat-mockup">
+        <div class="chat-header-mock">
+          <div class="chat-avatar">🍕</div>
+          <div>
+            <div class="chat-name">Pizzeria Da Mario</div>
+            <div class="chat-status"><span class="chat-status-dot">●</span> Online</div>
+          </div>
+        </div>
+        <div class="chat-body">
+          <div class="chat-msg incoming">
+            Ciao! Avete tavoli disponibili sabato sera per 4 persone? 🙂
+            <div class="chat-msg-time">20:47</div>
+          </div>
+          <div class="chat-typing">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-msg outgoing" style="animation-delay:.8s">
+            Ciao! Sì, abbiamo disponibilità sabato sera 🎉<br>
+            Preferite le 20:00 o le 21:30?
+            <div class="chat-msg-time">20:47</div>
+          </div>
+          <div class="chat-msg incoming">
+            Le 20:00 perfetto!
+            <div class="chat-msg-time">20:48</div>
+          </div>
+          <div class="chat-msg outgoing">
+            Perfetto! Ho prenotato per 4 persone sabato alle 20:00 a nome di..?
+            <div class="chat-msg-time">20:48</div>
+          </div>
+        </div>
+        <div class="chat-input-bar">
+          <div class="chat-input-fake">Scrivi un messaggio...</div>
+          <span style="font-size:20px">📎</span>
+          <span style="font-size:20px; color:var(--teal)">➤</span>
+        </div>
+      </div>
+
+      <div class="floating-badge fb-2">
+        <span class="fb-icon">📅</span>
+        Prenotazione raccolta automaticamente
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain">
+  <div class="container">
+    <div class="s-label">Il problema</div>
+    <h2 class="s-title">Il sabato sera,<br>mentre sei in <span class="t">cucina.</span></h2>
+
+    <div class="pain-narrative">
+      <p>È sabato sera. Hai 40 coperti, due camerieri e il fuoco acceso su sei fornelli.</p>
+      <p>Il telefono squilla. WhatsApp si riempie. <em>"Avete posto stasera?"</em> <em>"A che ora chiudete?"</em> <em>"Posso prenotare per domenica?"</em></p>
+      <p>Chi può risponde quando può. Chi non trova risposta chiama il locale di fronte.</p>
+      <p>E il lunedì mattina scopri che quel tavolo da 6 non si è presentato. Senza preavviso. Senza nemmeno un messaggio.</p>
+    </div>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-emoji">🍽️</div>
+        <div class="pain-title">Ristoranti & Bar</div>
+        <div class="pain-text">Sei in cucina alle 20:00 e arrivano 10 messaggi su WhatsApp per prenotazioni, orari e menù. Non puoi rispondere a tutti.</div>
+        <div class="pain-quote">"Ho perso una prenotazione da 8 persone perché non ho risposto in tempo."</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">🏥</div>
+        <div class="pain-title">Studi & Professionisti</div>
+        <div class="pain-text">I pazienti chiamano fuori orario per sapere se c'è disponibilità. La segreteria è chiusa. Non c'è nessuno a rispondere.</div>
+        <div class="pain-quote">"Molti pazienti si rivolgono altrove perché non trovano risposta."</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">🏨</div>
+        <div class="pain-title">B&B & Strutture</div>
+        <div class="pain-text">Richieste di disponibilità arrivano da tutto il mondo, spesso in lingue diverse, nel cuore della notte. Impossibile gestirle da soli.</div>
+        <div class="pain-quote">"Ho perso prenotazioni dall'estero perché rispondevo troppo tardi."</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">🛍️</div>
+        <div class="pain-title">Negozi & E-commerce</div>
+        <div class="pain-text">Domande su prodotti, taglie, spedizioni, resi. Centinaia al giorno. Ogni risposta manuale ti toglie ore al lavoro vero.</div>
+        <div class="pain-quote">"Il 70% delle domande sono sempre le stesse. Mi ha stufato risponderle."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="come-funziona">
+  <div class="container">
+    <div class="s-label">Come funziona</div>
+    <h2 class="s-title">Tre passi.<br><span class="t">Un bot pronto.</span></h2>
+    <p class="s-sub">Nessuna app da installare, nessun tecnico necessario. Ti chiediamo solo qualche informazione sulla tua attività — il resto lo facciamo noi.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">
+          📋
+          <span class="step-n">1</span>
+        </div>
+        <div class="step-title">Ci racconti la tua attività</div>
+        <div class="step-text">Compili un breve questionario: cosa fai, quali domande ricevi spesso, gli orari, il tono che vuoi usare con i clienti. Richiede 5 minuti.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">
+          🤖
+          <span class="step-n">2</span>
+        </div>
+        <div class="step-title">Configuriamo il bot per te</div>
+        <div class="step-text">Entro 24 ore il tuo assistente è pronto: personalizzato, addestrato sulle tue FAQ, con la tua voce e identità. Nessun copia-incolla generico.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">
+          🚀
+          <span class="step-n">3</span>
+        </div>
+        <div class="step-title">I tuoi clienti scrivono, lui risponde</div>
+        <div class="step-text">Condividi il link o aggiungi il bot al tuo profilo WhatsApp Business. Da quel momento risponde da solo, 24 ore su 24, 365 giorni l'anno.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="container">
+    <div class="s-label">Perché funziona</div>
+    <h2 class="s-title">Come avere una persona<br>in più, <span class="t">sempre disponibile.</span></h2>
+    <p class="s-sub">BotReady è come avere una Silvia in più — solo che lavora 24 ore su 24, non va in ferie e non si ammala.</p>
+
+    <div class="feat-grid">
+      <div class="feat-item">
+        <div class="feat-icon">🍳</div>
+        <div>
+          <div class="feat-title">Risponde mentre sei in cucina</div>
+          <div class="feat-text">Niente più messaggi persi durante il servizio. Il cliente scrive, riceve risposta in secondi, prenota. Tu lo scopri dopo, quando hai cinque minuti.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🔔</div>
+        <div>
+          <div class="feat-title">Manda il promemoria il giorno prima</div>
+          <div class="feat-text">Un semplice messaggio — "Ti ricordiamo la tua prenotazione per domani sera" — riduce i no-show del 30-50%. Non ci devi pensare: parte da solo.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🌙</div>
+        <div>
+          <div class="feat-title">Disponibile quando i clienti scrivono davvero</div>
+          <div class="feat-text">Le 22:30 di domenica. Ferragosto. Quando stai già dormendo. Risponde comunque. Nessuna prenotazione va persa per un messaggio senza risposta.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🔄</div>
+        <div>
+          <div class="feat-title">Aggiornamenti inclusi</div>
+          <div class="feat-text">Cambiano gli orari? Hai nuovi prodotti? Scrivi e aggiorniamo il bot entro 24 ore. Nessun costo aggiuntivo nei piani Pro e Business.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🎭</div>
+        <div>
+          <div class="feat-title">Personalità su misura</div>
+          <div class="feat-text">Vuoi un tono formale o informale? Il bot parla come vuoi tu. Può anche avere un nome e una piccola bio personalizzata.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📊</div>
+        <div>
+          <div class="feat-title">Report mensile (Pro e Business)</div>
+          <div class="feat-text">Ogni mese ricevi un report: quanti messaggi ha gestito, le domande più frequenti, i picchi di attività. Dati utili, non inutili statistiche.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="roi-section">
+  <div class="container">
+    <div class="s-label">I numeri che contano</div>
+    <h2 class="s-title">Si ripaga in<br><span class="t">2-3 settimane.</span></h2>
+    <p class="s-sub">Un ristorante da 40 coperti perde in media 15.000€ all'anno di no-show. Con i promemoria, quella perdita si dimezza.</p>
+
+    <div class="roi-grid">
+      <div class="roi-stat">
+        <div class="roi-num">15.000€</div>
+        <div class="roi-label">persi ogni anno<br>in no-show (media 40 coperti)</div>
+      </div>
+      <div class="roi-stat">
+        <div class="roi-num">-30–50%</div>
+        <div class="roi-label">di no-show in meno<br>con i promemoria automatici</div>
+      </div>
+      <div class="roi-stat">
+        <div class="roi-num">€99</div>
+        <div class="roi-label">al mese, tutto incluso,<br>nessun costo nascosto</div>
+      </div>
+      <div class="roi-stat">
+        <div class="roi-num">2-3 sett.</div>
+        <div class="roi-label">e si è già ripagato —<br>il resto è guadagno netto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO INTERATTIVA -->
+<section class="demo-section" id="demo">
+  <div class="container">
+    <div class="s-label">Demo interattiva</div>
+    <h2 class="s-title">Vedi il bot<br>in <span class="t">azione.</span></h2>
+    <p class="s-sub">Seleziona il tuo settore e guarda come BotReady gestisce una vera conversazione con i tuoi clienti.</p>
+
+    <div class="demo-tabs" role="tablist">
+      <button class="demo-tab-btn active" onclick="startDemo('ristorante',this)">🍽️ Ristorante</button>
+      <button class="demo-tab-btn" onclick="startDemo('studio',this)">🏥 Studio Medico</button>
+      <button class="demo-tab-btn" onclick="startDemo('ecommerce',this)">🛍️ Negozio</button>
+    </div>
+
+    <div class="demo-chat-card">
+      <div class="demo-chat-header">
+        <div class="chat-avatar" id="demoAvatar">🍽️</div>
+        <div>
+          <div class="chat-name" id="demoName">Ristorante Da Mario</div>
+          <div class="chat-status"><span class="chat-status-dot">●</span> Bot attivo</div>
+        </div>
+      </div>
+      <div class="demo-chat-body" id="demoChatBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="prezzi" style="background: var(--bg2)">
+  <div class="container">
+    <div class="s-label">Prezzi</div>
+    <h2 class="s-title">Semplice.<br><span class="t">Senza sorprese.</span></h2>
+    <p class="s-sub">Nessun costo di attivazione, nessun vincolo contrattuale. Puoi cambiare piano o cancellare in qualsiasi momento.</p>
+
+    <div class="pricing-grid">
+      <!-- Base -->
+      <div class="plan">
+        <div class="plan-name">Base</div>
+        <div class="plan-price">€49</div>
+        <div class="plan-period">al mese · pagamento via bonifico</div>
+        <button class="plan-cta plan-cta-ghost" onclick="openModal('Base')">Inizia con Base</button>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 1 canale (Telegram o WhatsApp)</li>
+          <li><span class="check">✓</span> Fino a 500 messaggi/mese</li>
+          <li><span class="check">✓</span> 5 FAQ personalizzate</li>
+          <li><span class="check">✓</span> Setup in 48 ore</li>
+          <li><span class="check">✓</span> Supporto via email</li>
+          <li><span class="x">✗</span> Aggiornamenti inclusi</li>
+          <li><span class="x">✗</span> Report mensile</li>
+        </ul>
+      </div>
+
+      <!-- Pro (featured) -->
+      <div class="plan featured">
+        <div class="plan-badge">⭐ Più scelto</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">€99</div>
+        <div class="plan-period">al mese · pagamento via bonifico</div>
+        <button class="plan-cta plan-cta-primary" onclick="openModal('Pro')">Inizia con Pro</button>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 2 canali (Telegram + WhatsApp)</li>
+          <li><span class="check">✓</span> Messaggi illimitati</li>
+          <li><span class="check">✓</span> 20 FAQ personalizzate</li>
+          <li><span class="check">✓</span> Setup in 24 ore</li>
+          <li><span class="check">✓</span> Aggiornamenti inclusi</li>
+          <li><span class="check">✓</span> Report mensile</li>
+          <li><span class="check">✓</span> Personalità AI su misura</li>
+        </ul>
+      </div>
+
+      <!-- Business -->
+      <div class="plan">
+        <div class="plan-name">Business</div>
+        <div class="plan-price">€199</div>
+        <div class="plan-period">al mese · pagamento via bonifico</div>
+        <button class="plan-cta plan-cta-ghost" onclick="openModal('Business')">Inizia con Business</button>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Multi-canale illimitato</li>
+          <li><span class="check">✓</span> Messaggi illimitati</li>
+          <li><span class="check">✓</span> FAQ illimitate</li>
+          <li><span class="check">✓</span> Setup in 24 ore</li>
+          <li><span class="check">✓</span> Aggiornamenti prioritari</li>
+          <li><span class="check">✓</span> Report mensile avanzato</li>
+          <li><span class="check">✓</span> Fino a 3 bot diversi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="container">
+    <div class="s-label">Cosa dicono i clienti</div>
+    <h2 class="s-title">Risultati reali.<br><span class="t">Subito.</span></h2>
+    <p class="s-sub">Le prime attività che hanno adottato BotReady hanno visto risultati concreti dalla prima settimana.</p>
+
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Da quando ho il bot non perdo più prenotazioni. Risponde anche quando sono in cucina alle 21:00. In un mese ha gestito oltre 200 messaggi che avrei dovuto gestire io."</div>
+        <div class="review-author">
+          <div class="review-avatar">👨‍🍳</div>
+          <div>
+            <div class="review-name">Marco R.</div>
+            <div class="review-biz">Ristorante, Milano</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"La segreteria non deve più rispondere alle stesse 10 domande ogni giorno. Il bot le gestisce tutte. Abbiamo liberato 2 ore al giorno per lavoro che conta davvero."</div>
+        <div class="review-author">
+          <div class="review-avatar">👩‍⚕️</div>
+          <div>
+            <div class="review-name">Dott.ssa Farina</div>
+            <div class="review-biz">Studio medico, Roma</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Ho ricevuto 3 prenotazioni internazionali di notte nel primo mese. Prima le avrei perse. Setup semplicissimo, in meno di 24 ore era già attivo."</div>
+        <div class="review-author">
+          <div class="review-avatar">🏡</div>
+          <div>
+            <div class="review-name">Lucia M.</div>
+            <div class="review-biz">B&B, Firenze</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="s-label">Domande frequenti</div>
+    <h2 class="s-title">Hai dubbi?<br><span class="t">Ti rispondiamo.</span></h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          "I miei clienti vogliono parlare con una persona reale."
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Giusto. E quando una persona reale non c'è — perché sei in cucina, è mezzanotte, o sei in ferie — BotReady risponde al posto tuo. Non lo sostituisce. Lo copre. I clienti ricevono risposta invece del silenzio: preferiscono sempre quella.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          "Non ho tempo per imparare una cosa nuova."
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Non c'è niente da imparare. Tu mandi i tuoi orari, il tuo menù, le tue regole di prenotazione. Noi configuriamo tutto entro 24 ore. Poi funziona da solo — non devi toccare niente.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Quanto ci vuole per avere il bot attivo?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Dopo aver completato il questionario di onboarding, il tuo bot è pronto entro 24 ore per i piani Pro e Business, entro 48 ore per il piano Base. Non serve nessuna competenza tecnica da parte tua.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Devo installare qualcosa sul mio telefono?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            No. Il bot funziona su Telegram (che probabilmente hai già) e su WhatsApp Business. I tuoi clienti usano le app che già conoscono — non devi installare nulla di nuovo.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Posso aggiornare le informazioni del bot?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Certo. Cambiano gli orari, hai un nuovo menù, offri un servizio nuovo? Basta scriverci e aggiorniamo il bot. Con i piani Pro e Business gli aggiornamenti sono inclusi senza costi aggiuntivi.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Il bot risponde davvero a tutto o solo alle FAQ?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Il bot gestisce autonomamente tutte le domande per cui è stato addestrato. Per domande fuori contesto, dice che non sa rispondere e invita il cliente a contattarti direttamente — così non rischi mai risposte sbagliate.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Posso cancellare quando voglio?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Sì, senza penali e senza preavviso minimo. Scrivi e disattiviamo il servizio. Non ci sono contratti, vincoli o costi nascosti. Paghi solo i mesi che usi.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Chi gestisce il bot? È davvero automatico?
+          <span class="faq-chevron">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Sì, è completamente automatico. Il bot risponde in modo autonomo senza intervento umano. Funziona 24/7 senza interruzioni. Noi lo gestiamo tecnicamente e lo aggiorniamo quando necessario — tu non devi fare nulla.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container" style="display:flex;flex-direction:column;align-items:center">
+    <div class="urgency-tag">🎁 Offerta lancio: 14 giorni gratis — nessuna carta richiesta</div>
+    <h2 class="s-title">Smetti di perdere<br>prenotazioni. <span class="t">Inizia oggi.</span></h2>
+    <p class="s-sub">Tu mandi gli orari e il menù. Noi configuriamo tutto. Entro 24 ore risponde per te — mentre sei in cucina, di notte, in vacanza.</p>
+    <button class="btn-primary" style="font-size:17px; padding:16px 40px" onclick="openModal()">
+      Prova gratis — 14 giorni inclusi →
+    </button>
+    <p style="margin-top:16px; font-size:13px; color:var(--muted)">Nessuna carta di credito · Setup in 24 ore · Cancelli quando vuoi</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Bot<span>Ready</span></div>
+    <div class="footer-links">
+      <a href="#come-funziona">Come funziona</a>
+      <a href="#prezzi">Prezzi</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-copy">© 2026 BotReady · Tutti i diritti riservati</div>
+  </div>
+</footer>
+
+<!-- Form nascosto per Netlify (rilevato al deploy) -->
+<form name="lead" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="nome" />
+  <input type="text" name="cognome" />
+  <input type="text" name="biz" />
+  <input type="email" name="email" />
+  <input type="tel" name="tel" />
+  <input type="text" name="tipo" />
+  <input type="text" name="piano" />
+  <textarea name="note"></textarea>
+</form>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal modal-relative">
+    <button class="modal-close" onclick="closeModal()">×</button>
+
+    <div id="formView">
+      <h2>Inizia con BotReady</h2>
+      <p>Compila il form — ti contatteremo entro poche ore per configurare il tuo bot.</p>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label>Nome *</label>
+          <input type="text" id="f-nome" placeholder="Mario">
+        </div>
+        <div class="form-row">
+          <label>Cognome *</label>
+          <input type="text" id="f-cognome" placeholder="Rossi">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>Nome attività *</label>
+        <input type="text" id="f-biz" placeholder="Ristorante Da Mario">
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label>Email *</label>
+          <input type="email" id="f-email" placeholder="mario@esempio.it">
+        </div>
+        <div class="form-row">
+          <label>Telefono</label>
+          <input type="tel" id="f-tel" placeholder="+39 320 000 0000">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>Tipo di attività *</label>
+        <select id="f-tipo">
+          <option value="">Seleziona...</option>
+          <option>Ristorante / Bar / Pizzeria</option>
+          <option>Studio medico / Dentista</option>
+          <option>B&B / Hotel / Affitti brevi</option>
+          <option>Negozio / E-commerce</option>
+          <option>Parrucchiere / Estetista</option>
+          <option>Studio professionale</option>
+          <option>Altro</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Piano di interesse</label>
+        <select id="f-piano">
+          <option value="Pro">Pro — €99/mese (consigliato)</option>
+          <option value="Base">Base — €49/mese</option>
+          <option value="Business">Business — €199/mese</option>
+          <option value="">Non so ancora</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Cosa vuoi che gestisca il bot?</label>
+        <textarea id="f-note" placeholder="Es: prenotazioni tavoli, domande sul menù, orari di apertura..."></textarea>
+      </div>
+
+      <div style="background:rgba(0,212,180,.06);border:1px solid rgba(0,212,180,.15);border-radius:10px;padding:14px 16px;margin-bottom:16px;font-size:12px;color:var(--muted);line-height:1.6">
+        💳 <strong style="color:var(--text)">Pagamento:</strong> il primo mese è gratuito. Dal secondo mese, riceverai le istruzioni per il pagamento via bonifico bancario. Nessuna carta di credito, nessun addebito automatico.
+      </div>
+
+      <button class="modal-cta" id="submitBtn" onclick="submitForm()">
+        Prova gratis — 14 giorni inclusi →
+      </button>
+    </div>
+
+    <div class="form-success" id="successView">
+      <div class="success-icon">🎉</div>
+      <h3>Richiesta ricevuta!</h3>
+      <p>Ti contatteremo entro poche ore per configurare il tuo bot.<br>Controlla la casella email — ti mandiamo un riepilogo.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Modal ──
+let selectedPlan = 'Pro';
+
+function openModal(plan) {
+  if (plan) {
+    selectedPlan = plan;
+    document.getElementById('f-piano').value = plan;
+  }
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+// ── FAQ ──
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── Form ──
+async function submitForm() {
+  const nome    = document.getElementById('f-nome').value.trim();
+  const cognome = document.getElementById('f-cognome').value.trim();
+  const biz     = document.getElementById('f-biz').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const tipo    = document.getElementById('f-tipo').value;
+  const piano   = document.getElementById('f-piano').value;
+  const note    = document.getElementById('f-note').value.trim();
+
+  if (!nome || !cognome || !biz || !email || !tipo) {
+    alert('Compila i campi obbligatori (*)');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Invio in corso...';
+
+  const tel = document.getElementById('f-tel') ? document.getElementById('f-tel').value.trim() : '';
+  const payload = { nome, cognome, biz, email, tel, tipo, piano, note,
+                    ts: new Date().toISOString() };
+
+  const isLocal = ['localhost','127.0.0.1'].includes(window.location.hostname);
+
+  // ── 1. Invia a server locale (Telegram notification) se disponibile
+  if (isLocal) {
+    try {
+      const r = await fetch('http://localhost:3201/lead', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (r.ok) { showSuccess(payload); return; }
+    } catch { /* server non attivo, continua */ }
+  }
+
+  // ── 2. Invia a Netlify Forms (quando è live sul web)
+  if (!isLocal) {
+    try {
+      const fd = new FormData();
+      fd.append('form-name', 'lead');
+      Object.entries(payload).forEach(([k, v]) => fd.append(k, v));
+      await fetch('/', { method: 'POST', body: fd });
+    } catch { /* ignora errori netlify */ }
+  }
+
+  // ── 3. Mostra successo (sempre)
+  showSuccess(payload);
+}
+
+function fallbackSuccess(data) {
+  // Salva in localStorage come backup
+  const leads = JSON.parse(localStorage.getItem('botready_leads') || '[]');
+  leads.push(data);
+  localStorage.setItem('botready_leads', JSON.stringify(leads));
+  showSuccess(data);
+}
+
+function showSuccess(data) {
+  document.getElementById('formView').style.display = 'none';
+  const params = new URLSearchParams({
+    nome:  (data.nome + ' ' + data.cognome).trim(),
+    email: data.email,
+    biz:   data.biz,
+    tipo:  data.tipo,
+    piano: data.piano || ''
+  });
+  document.getElementById('successView').innerHTML = `
+    <div class="success-icon">🎉</div>
+    <h3>Richiesta ricevuta!</h3>
+    <p style="margin-bottom:20px">Ora completa il questionario di configurazione — ci vogliono 5 minuti.</p>
+    <a href="onboarding.html?${params}" style="display:inline-block;background:var(--teal);color:#07090f;font-weight:800;padding:13px 28px;border-radius:10px;font-size:15px;text-decoration:none">
+      Configura il tuo bot →
+    </a>
+  `;
+  document.getElementById('successView').style.display = 'block';
+}
+
+// ── Demo interattiva ──
+const DEMO_DATA = {
+  ristorante: {
+    avatar: '🍽️', name: 'Ristorante Da Mario',
+    messages: [
+      { t: 'in',  text: 'Siete aperti stasera?' },
+      { t: 'out', text: 'Certo! Siamo aperti fino alle 23:00 🍽️ Vuoi prenotare un tavolo?' },
+      { t: 'in',  text: 'Sì, per 2 alle 20:30' },
+      { t: 'out', text: 'Perfetto! Per che nome prenoto?' },
+      { t: 'in',  text: 'Marco' },
+      { t: 'out', text: 'Prenotazione per Marco, 2 persone ore 20:30. Ti aspettiamo! ✅' }
+    ]
+  },
+  studio: {
+    avatar: '🏥', name: 'Studio Medico Rossi',
+    messages: [
+      { t: 'in',  text: 'Vorrei prenotare una visita' },
+      { t: 'out', text: 'Certamente! È una prima visita o un controllo di routine?' },
+      { t: 'in',  text: 'Prima visita' },
+      { t: 'out', text: 'Perfetto. Qual è il giorno che preferisce questa settimana?' },
+      { t: 'in',  text: 'Giovedì pomeriggio' },
+      { t: 'out', text: 'Ho disponibilità giovedì alle 16:00 e 17:30. Quale preferisce?' }
+    ]
+  },
+  ecommerce: {
+    avatar: '🛍️', name: 'Boutique Online',
+    messages: [
+      { t: 'in',  text: 'Avete la felpa blu in taglia M?' },
+      { t: 'out', text: 'Sì, la felpa blu è disponibile in taglia M! 🎉 La vuoi nel modello con cappuccio o senza?' },
+      { t: 'in',  text: 'Con cappuccio' },
+      { t: 'out', text: 'Ottima scelta! Spedizione gratuita sopra i €50. Vuoi il link diretto per acquistare?' }
+    ]
+  }
+};
+
+let _demoTimers = [];
+let _demoKey   = null;
+
+function startDemo(key, btn) {
+  _demoTimers.forEach(clearTimeout);
+  _demoTimers = [];
+  _demoKey = key;
+
+  document.querySelectorAll('.demo-tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const data = DEMO_DATA[key];
+  document.getElementById('demoAvatar').textContent = data.avatar;
+  document.getElementById('demoName').textContent   = data.name;
+
+  const body = document.getElementById('demoChatBody');
+  body.innerHTML = '';
+
+  let delay = 400;
+  data.messages.forEach(msg => {
+    if (msg.t === 'out') {
+      // Mostra indicatore di digitazione
+      _demoTimers.push(setTimeout(() => {
+        if (_demoKey !== key) return;
+        const dot = document.createElement('div');
+        dot.className = 'chat-typing demo-typing-indicator';
+        dot.innerHTML = '<span></span><span></span><span></span>';
+        body.appendChild(dot);
+        body.scrollTop = body.scrollHeight;
+      }, delay));
+      delay += 750;
+      // Sostituisce con il messaggio vero
+      _demoTimers.push(setTimeout(() => {
+        if (_demoKey !== key) return;
+        const ind = body.querySelector('.demo-typing-indicator');
+        if (ind) ind.remove();
+        _appendDemoMsg(body, 'outgoing', msg.text);
+      }, delay));
+    } else {
+      _demoTimers.push(setTimeout(() => {
+        if (_demoKey !== key) return;
+        _appendDemoMsg(body, 'incoming', msg.text);
+      }, delay));
+    }
+    delay += 1050;
+  });
+}
+
+function _appendDemoMsg(container, cls, text) {
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + cls;
+  div.textContent = text;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  startDemo('ristorante', document.querySelector('.demo-tab-btn'));
+});
+
+// ── Keyboard ──
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ── HERO 3D UPGRADE ──────────────────────────────────────────────────────────
+
+// 1. Canvas particelle connesse — sfondo tech nella hero
+(function heroParticles() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const TEAL    = '0,212,180';
+  const N       = 60;      // numero particelle
+  const MAX_D   = 150;     // distanza max per tracciare le linee
+  let W, H, pts, raf;
+
+  function resize() {
+    const hero = canvas.parentElement;
+    W = canvas.width  = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+
+  function makePoint() {
+    return {
+      x:  Math.random() * W,
+      y:  Math.random() * H,
+      vx: (Math.random() - .5) * .45,
+      vy: (Math.random() - .5) * .45,
+      r:  Math.random() * 1.4 + .8
+    };
+  }
+
+  function init() { pts = Array.from({ length: N }, makePoint); }
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+
+    // muovi punti, rimbalza ai bordi
+    pts.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+    });
+
+    // linee di connessione
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[i].x - pts[j].x;
+        const dy = pts[i].y - pts[j].y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < MAX_D) {
+          ctx.strokeStyle = `rgba(${TEAL},${(1 - d / MAX_D) * 0.22})`;
+          ctx.lineWidth   = 1;
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // punti
+    pts.forEach(p => {
+      ctx.fillStyle = `rgba(${TEAL},0.55)`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    raf = requestAnimationFrame(tick);
+  }
+
+  function start() { resize(); init(); tick(); }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    // reinizializza i punti fuori schermo
+    pts.forEach(p => {
+      if (p.x > W) p.x = Math.random() * W;
+      if (p.y > H) p.y = Math.random() * H;
+    });
+  });
+}());
+
+// 2. Tilt 3D mousemove sulla hero-visual
+(function heroTilt() {
+  const visual = document.querySelector('.hero-visual');
+  if (!visual) return;
+
+  // Su mobile/touch non applicare il tilt
+  if (window.matchMedia('(hover: none)').matches) return;
+
+  let tRX = 0, tRY = 0;   // target rotation
+  let cRX = 0, cRY = 0;   // current rotation (lerp)
+  let hovering = false;
+  let raf;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function animate() {
+    cRX = lerp(cRX, tRX, 0.12);
+    cRY = lerp(cRY, tRY, 0.12);
+
+    // perspective() nella stessa transform = nessun cambio al DOM HTML
+    visual.style.transform =
+      `perspective(900px) rotateX(${cRX.toFixed(3)}deg) rotateY(${cRY.toFixed(3)}deg)`;
+
+    const stillMoving =
+      Math.abs(cRX - tRX) > 0.01 ||
+      Math.abs(cRY - tRY) > 0.01;
+
+    if (stillMoving) raf = requestAnimationFrame(animate);
+    else if (!hovering) visual.style.transform = '';
+  }
+
+  visual.addEventListener('mouseenter', () => {
+    hovering = true;
+    visual.classList.add('tilting');
+  });
+
+  visual.addEventListener('mousemove', e => {
+    const rect = visual.getBoundingClientRect();
+    const mx   = e.clientX - rect.left - rect.width  / 2;
+    const my   = e.clientY - rect.top  - rect.height / 2;
+
+    tRY =  (mx / (rect.width  / 2)) * 9;  // max ±9° orizzontale
+    tRX = -(my / (rect.height / 2)) * 6;  // max ±6° verticale
+
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(animate);
+  });
+
+  visual.addEventListener('mouseleave', () => {
+    hovering = false;
+    tRX = 0; tRY = 0;
+    visual.classList.remove('tilting');
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(animate);
+  });
+}());
+
+// ── HERO ENTRANCE ANIMATION ──
+// Il CSS imposta opacity:0 sugli elementi hero — questo JS li rivela con stagger
+(function heroEntrance() {
+  var selectors = ['.hero-tag','.hero-title','.hero-sub','.hero-actions','.hero-trust','.hero-visual'];
+
+  // Fallback: se GSAP non carica (CDN offline, timeout) mostra tutto subito
+  function showAll() {
+    selectors.forEach(function(s) {
+      var el = document.querySelector(s);
+      if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
+    });
+  }
+
+  // Safety timeout: dopo 2.5s mostra tutto comunque
+  var safetyTimer = setTimeout(showAll, 2500);
+
+  function runEntrance() {
+    clearTimeout(safetyTimer);
+    if (typeof gsap === 'undefined') { showAll(); return; }
+
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.to('.hero-tag',     { opacity: 1, y: 0, duration: 0.5 }, 0.15)
+      .to('.hero-title',   { opacity: 1, y: 0, duration: 0.65 }, 0.30)
+      .to('.hero-sub',     { opacity: 1, y: 0, duration: 0.55 }, 0.55)
+      .to('.hero-actions', { opacity: 1, y: 0, duration: 0.50 }, 0.75)
+      .to('.hero-trust',   { opacity: 1, y: 0, duration: 0.45 }, 0.90)
+      .to('.hero-visual',  { opacity: 1,        duration: 0.70 }, 0.40);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runEntrance);
+  } else {
+    runEntrance();
+  }
+}());
+</script>
+
+</body>
+</html>
