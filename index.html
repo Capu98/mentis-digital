@@ -153,31 +153,12 @@ img { max-width: 100%; display: block; }
   width: 100%;
 }
 
-/* ── NAV LOGO TEXT ── */
+/* ── NAV LOGO ── */
 .nav-logo {
   display: flex; align-items: center; gap: 10px;
   text-decoration: none;
 }
-.nav-logo-icon {
-  width: 36px; height: 36px; border-radius: 9px;
-  background: var(--gradient);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; font-weight: 900; color: white;
-  letter-spacing: -1px; flex-shrink: 0;
-  box-shadow: 0 2px 12px rgba(79,70,229,.4);
-}
-.nav-logo-wordmark {
-  display: flex; flex-direction: column; gap: 1px;
-}
-.nav-logo-name {
-  font-size: 16px; font-weight: 800; color: white;
-  letter-spacing: -.2px; line-height: 1;
-}
-.nav-logo-caption {
-  font-size: 9px; font-weight: 500; letter-spacing: 2px;
-  text-transform: uppercase; color: rgba(255,255,255,.42);
-  line-height: 1;
-}
+.nav-logo img { height: 46px; }
 
 .nav-links {
   display: flex; align-items: center; gap: 8px;
@@ -566,11 +547,9 @@ footer {
   flex-wrap: wrap; gap: 20px;
 }
 
-.footer-logo { display: flex; align-items: center; gap: 9px; opacity: .8; transition: opacity .2s; }
+.footer-logo { display: flex; align-items: center; opacity: .8; transition: opacity .2s; }
 .footer-logo:hover { opacity: 1; }
-.footer-logo .nav-logo-icon { width: 28px; height: 28px; border-radius: 7px; font-size: 13px; box-shadow: none; }
-.footer-logo .nav-logo-name { font-size: 14px; }
-.footer-logo .nav-logo-caption { font-size: 8px; }
+.footer-logo img { height: 36px; }
 
 .footer-links {
   display: flex; gap: 24px; list-style: none;
@@ -822,11 +801,7 @@ footer {
 <nav class="nav">
   <div class="container nav-inner">
     <a href="#" class="nav-logo">
-      <div class="nav-logo-icon">M</div>
-      <div class="nav-logo-wordmark">
-        <span class="nav-logo-name">MENTIS</span>
-        <span class="nav-logo-caption">Digital</span>
-      </div>
+      <img src="logo.svg" alt="Mentis Digital">
     </a>
 
     <ul class="nav-links" id="navLinks">
@@ -1346,11 +1321,7 @@ footer {
 <footer>
   <div class="container footer-inner">
     <a href="#" class="footer-logo">
-      <div class="nav-logo-icon">M</div>
-      <div class="nav-logo-wordmark">
-        <span class="nav-logo-name">MENTIS</span>
-        <span class="nav-logo-caption">Digital</span>
-      </div>
+      <img src="logo.svg" alt="Mentis Digital">
     </a>
 
     <ul class="footer-links">
