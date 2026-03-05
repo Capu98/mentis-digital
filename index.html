@@ -16,11 +16,24 @@
 html { scroll-behavior: smooth; }
 
 :root {
+  /* ── MENTIS BRAND PALETTE ── */
   --indigo:      #4F46E5;
   --indigo-dark: #3730A3;
   --violet:      #7C3AED;
   --violet-dark: #5B21B6;
-  --slate:       #0F172A;
+
+  /* ── BOTREADY PRODUCT PALETTE (teal/green) ── */
+  --botready:    #00D4B4;
+  --botready-dk: #00A896;
+  --botready-gradient: linear-gradient(135deg, #00D4B4, #10D48E);
+
+  /* ── BOTSOCIAL PRODUCT PALETTE (pink/violet) ── */
+  --botsocial:    #E11D78;
+  --botsocial-dk: #9D174D;
+  --botsocial-gradient: linear-gradient(135deg, #E11D78, #7C3AED);
+
+  /* ── NEUTRAL SCALE ── */
+  --slate:       #0B0F1E;
   --slate-700:   #334155;
   --slate-600:   #475569;
   --slate-500:   #64748B;
@@ -30,8 +43,13 @@ html { scroll-behavior: smooth; }
   --bg:          #FAFAFA;
   --bg-alt:      #F1F5F9;
   --white:       #FFFFFF;
-  --gradient:    linear-gradient(135deg, var(--indigo), var(--violet));
+
+  /* ── GRADIENTS ── */
+  --gradient:       linear-gradient(135deg, var(--indigo), var(--violet));
   --gradient-hover: linear-gradient(135deg, var(--indigo-dark), var(--violet-dark));
+  --hero-bg:        linear-gradient(155deg, #07091A 0%, #0B0F1E 50%, #13082E 100%);
+
+  /* ── SHADOWS ── */
   --shadow-sm:   0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
   --shadow-md:   0 4px 16px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.05);
   --shadow-lg:   0 20px 48px rgba(79,70,229,.15), 0 8px 20px rgba(0,0,0,.08);
@@ -80,13 +98,13 @@ img { max-width: 100%; display: block; }
 
 .s-title {
   font-size: clamp(26px, 4vw, 40px);
-  font-weight: 800; letter-spacing: -1px; line-height: 1.15;
+  font-weight: 800; letter-spacing: -.4px; line-height: 1.2;
   color: var(--slate); margin-bottom: 16px;
 }
 
 .s-sub {
-  font-size: 17px; color: var(--slate-500);
-  line-height: 1.7; font-weight: 400;
+  font-size: 18px; color: var(--slate-600);
+  line-height: 1.75; font-weight: 400;
 }
 
 /* ── BUTTONS ── */
@@ -135,8 +153,30 @@ img { max-width: 100%; display: block; }
   width: 100%;
 }
 
-.nav-logo img {
-  height: 56px; width: auto;
+/* ── NAV LOGO TEXT ── */
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: var(--gradient);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 900; color: white;
+  letter-spacing: -1px; flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(79,70,229,.4);
+}
+.nav-logo-wordmark {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.nav-logo-name {
+  font-size: 16px; font-weight: 800; color: white;
+  letter-spacing: -.2px; line-height: 1;
+}
+.nav-logo-caption {
+  font-size: 9px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,.42);
+  line-height: 1;
 }
 
 .nav-links {
@@ -175,7 +215,7 @@ img { max-width: 100%; display: block; }
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
-  background: var(--slate);
+  background: var(--hero-bg);
   display: flex; align-items: center;
   position: relative; overflow: hidden;
   padding-top: 76px;
@@ -190,19 +230,19 @@ img { max-width: 100%; display: block; }
 .hero-deco::before {
   content: '';
   position: absolute;
-  width: 700px; height: 700px;
+  width: 800px; height: 800px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(79,70,229,.18) 0%, transparent 70%);
-  top: -200px; right: -100px;
+  background: radial-gradient(circle, rgba(79,70,229,.22) 0%, transparent 68%);
+  top: -260px; right: -120px;
 }
 
 .hero-deco::after {
   content: '';
   position: absolute;
-  width: 500px; height: 500px;
+  width: 600px; height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124,58,237,.14) 0%, transparent 70%);
-  bottom: -150px; left: -80px;
+  background: radial-gradient(circle, rgba(124,58,237,.18) 0%, transparent 68%);
+  bottom: -180px; left: -100px;
 }
 
 .hero-deco-ring {
@@ -526,7 +566,11 @@ footer {
   flex-wrap: wrap; gap: 20px;
 }
 
-.footer-logo img { height: 44px; width: auto; opacity: .8; }
+.footer-logo { display: flex; align-items: center; gap: 9px; opacity: .8; transition: opacity .2s; }
+.footer-logo:hover { opacity: 1; }
+.footer-logo .nav-logo-icon { width: 28px; height: 28px; border-radius: 7px; font-size: 13px; box-shadow: none; }
+.footer-logo .nav-logo-name { font-size: 14px; }
+.footer-logo .nav-logo-caption { font-size: 8px; }
 
 .footer-links {
   display: flex; gap: 24px; list-style: none;
@@ -778,7 +822,11 @@ footer {
 <nav class="nav">
   <div class="container nav-inner">
     <a href="#" class="nav-logo">
-      <img src="logo.svg" alt="MENTIS Digital">
+      <div class="nav-logo-icon">M</div>
+      <div class="nav-logo-wordmark">
+        <span class="nav-logo-name">MENTIS</span>
+        <span class="nav-logo-caption">Digital</span>
+      </div>
     </a>
 
     <ul class="nav-links" id="navLinks">
@@ -786,6 +834,7 @@ footer {
       <li><a href="#come-lavoriamo">Come lavoriamo</a></li>
       <li><a href="#target">Per chi</a></li>
       <li><a href="#portfolio">Prodotti</a></li>
+      <li><a href="#risorse">Template</a></li>
       <li><a href="#" onclick="openContact('call'); return false;" class="nav-cta">Contattaci</a></li>
     </ul>
 
@@ -1157,6 +1206,75 @@ footer {
   </div>
 </section>
 
+<!-- ── RISORSE ── -->
+<section class="risorse" id="risorse" style="padding:clamp(80px,10vw,120px) 0;background:var(--bg-alt)">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="s-label">Risorse</span>
+      <h2 class="s-title">Template pronti all'uso.<br>Apri e personalizza.</h2>
+      <p class="s-sub">Landing page HTML premium — nessun framework, nessuna dipendenza. Apri il file nel browser e funziona. Perfetti per freelancer e agenzie.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:48px">
+
+      <!-- Template Restaurant -->
+      <div class="service-card" data-animate style="display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div class="service-icon" style="font-size:28px;background:linear-gradient(135deg,rgba(0,212,180,.12),rgba(0,168,150,.08));border-color:rgba(0,212,180,.2)">🍽️</div>
+          <div class="service-title">Restaurant Landing Page</div>
+          <p class="service-text">Dark tech theme per ristoranti. Particle background animato, WhatsApp CTA, mobile-first, GSAP animations. Un solo file HTML.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:16px">
+            <span class="service-tag">HTML5</span>
+            <span class="service-tag">CSS3</span>
+            <span class="service-tag">GSAP</span>
+            <span class="service-tag">Mobile-First</span>
+          </div>
+        </div>
+        <a href="https://2050184640907.gumroad.com/l/zleiig" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:12px 24px;background:var(--gradient);color:#fff;border-radius:12px;font-weight:700;font-size:14px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(79,70,229,.3);width:fit-content">
+          €49 — Acquista su Gumroad
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/></svg>
+        </a>
+      </div>
+
+      <!-- Template Corporate (coming soon) -->
+      <div class="service-card" data-animate style="display:flex;flex-direction:column;justify-content:space-between;opacity:.7">
+        <div>
+          <div class="service-icon" style="font-size:28px;background:linear-gradient(135deg,rgba(79,70,229,.12),rgba(124,58,237,.08))">🏢</div>
+          <div class="service-title">Corporate B2B Landing Page</div>
+          <p class="service-text">Navy/gold theme professionale per aziende, studi legali, consulenze. Trust badges, team section, contact form con WhatsApp.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:16px">
+            <span class="service-tag">HTML5</span>
+            <span class="service-tag">CSS3</span>
+            <span class="service-tag">B2B</span>
+            <span class="service-tag">Professional</span>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:12px 24px;background:rgba(79,70,229,.1);color:var(--indigo);border-radius:12px;font-weight:700;font-size:14px;width:fit-content">
+          €59 — In arrivo
+        </span>
+      </div>
+
+      <!-- Bundle -->
+      <div class="service-card" data-animate style="display:flex;flex-direction:column;justify-content:space-between;opacity:.7">
+        <div>
+          <div class="service-icon" style="font-size:28px;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(234,88,12,.08));border-color:rgba(245,158,11,.2)">📦</div>
+          <div class="service-title">Bundle — Entrambi i Template</div>
+          <p class="service-text">Restaurant + Corporate in un unico pacchetto a prezzo scontato. Ideale per agenzie che servono più settori.</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:16px">
+            <span class="service-tag">2 Template</span>
+            <span class="service-tag">Risparmio €19</span>
+            <span class="service-tag">Commercial License</span>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:12px 24px;background:rgba(245,158,11,.1);color:#F59E0B;border-radius:12px;font-weight:700;font-size:14px;width:fit-content">
+          €89 — In arrivo
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ── CONTATTI ── -->
 <section class="contatti" id="contatti">
   <div class="container">
@@ -1228,16 +1346,22 @@ footer {
 <footer>
   <div class="container footer-inner">
     <a href="#" class="footer-logo">
-      <img src="logo.svg" alt="MENTIS Digital">
+      <div class="nav-logo-icon">M</div>
+      <div class="nav-logo-wordmark">
+        <span class="nav-logo-name">MENTIS</span>
+        <span class="nav-logo-caption">Digital</span>
+      </div>
     </a>
 
     <ul class="footer-links">
       <li><a href="#servizi">Servizi</a></li>
       <li><a href="#contatti">Contatti</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="termini-servizio.html">Termini di Servizio</a></li>
+      <li><a href="cookie-policy.html">Cookie Policy</a></li>
     </ul>
 
-    <div class="footer-copy">© 2025 Mentis Digital — Tutti i diritti riservati</div>
+    <div class="footer-copy">© 2026 Mentis Digital — Tutti i diritti riservati</div>
   </div>
 </footer>
 
