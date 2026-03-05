@@ -861,6 +861,12 @@ footer {
           <textarea name="messaggio" rows="4" placeholder="Descrivi brevemente la tua attività e cosa ti serve..."></textarea>
         </div>
 
+        <div class="cf-g" style="margin-top:4px">
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:rgba(255,255,255,.7);line-height:1.5">
+            <input type="checkbox" name="privacy" required style="margin-top:3px;flex-shrink:0;accent-color:#4F46E5">
+            Ho letto e accetto la <a href="privacy-policy.html" style="color:#818CF8;text-decoration:underline;margin-left:4px">Privacy Policy</a>
+          </label>
+        </div>
         <button type="submit" class="cf-btn" id="cBtn">Invia richiesta →</button>
       </form>
     </div>
@@ -883,6 +889,8 @@ footer {
       <a href="https://capu98.github.io/botready" target="_blank" style="color:#818CF8">BotReady</a>
       <a href="https://capu98.github.io/botsocial" target="_blank" style="color:#F9A8D4">BotSocial</a>
       <a href="mailto:mentis.ai.outreach@gmail.com">Contatti</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
     </nav>
     <div class="footer-copy">© 2026 Mentis Digital — Tutti i diritti riservati</div>
   </div>
@@ -996,6 +1004,43 @@ const cObs = new IntersectionObserver((entries)=>{
   });
 },{threshold:.5});
 counters.forEach(c=>cObs.observe(c));
+</script>
+
+<!-- Cookie Banner GDPR -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#0B0F1E;border-top:1px solid rgba(255,255,255,.08);padding:16px 24px;font-family:Inter,sans-serif">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <p style="color:rgba(255,255,255,.7);font-size:13px;line-height:1.5;margin:0;flex:1;min-width:280px">
+      Questo sito utilizza cookie tecnici per il corretto funzionamento. Nessun cookie di profilazione viene installato senza il tuo consenso.
+      <a href="cookie-policy.html" style="color:#818CF8;text-decoration:underline">Cookie Policy</a>
+    </p>
+    <div style="display:flex;gap:8px;flex-shrink:0">
+      <button onclick="acceptCookies(false)" style="padding:8px 16px;border:1px solid rgba(255,255,255,.15);background:transparent;color:rgba(255,255,255,.7);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">Rifiuta</button>
+      <button onclick="acceptCookies(true)" style="padding:8px 16px;border:none;background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">Accetta</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  if (!localStorage.getItem('cookie_consent')) {
+    document.getElementById('cookieBanner').style.display = 'block';
+  } else if (localStorage.getItem('cookie_consent') === 'accepted') {
+    loadAnalytics();
+  }
+})();
+function acceptCookies(accept) {
+  localStorage.setItem('cookie_consent', accept ? 'accepted' : 'rejected');
+  document.getElementById('cookieBanner').style.display = 'none';
+  if (accept) loadAnalytics();
+}
+function loadAnalytics() {
+  if (window._analyticsLoaded) return;
+  window._analyticsLoaded = true;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.dataset.domain = 'capu98.github.io';
+  s.src = 'https://plausible.io/js/script.js';
+  document.head.appendChild(s);
+}
 </script>
 </body>
 </html>

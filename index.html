@@ -810,7 +810,7 @@ footer {
       <li><a href="#come-lavoriamo">Come lavoriamo</a></li>
       <li><a href="#target">Per chi</a></li>
       <li><a href="#portfolio">Prodotti</a></li>
-      <li><a href="#risorse">Template</a></li>
+
       <li><a href="#" onclick="openContact('call'); return false;" class="nav-cta">Contattaci</a></li>
     </ul>
 
@@ -1289,6 +1289,7 @@ footer {
       <form id="cForm" name="contatto-mentis" method="POST" data-netlify="true" onsubmit="handleContact(event)">
         <input type="hidden" name="form-name" value="contatto-mentis">
         <input type="hidden" name="tipo" id="cTipo" value="call">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <div class="cf-row">
           <div class="cf-g">
             <label>Nome *</label>
