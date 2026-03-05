@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — MENTIS Digital</title>
+<meta name="description" content="Informativa sull'utilizzo dei cookie sul sito MENTIS Digital, ai sensi del GDPR e delle Linee Guida del Garante Privacy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --indigo:      #4F46E5;
+  --indigo-dark: #3730A3;
+  --violet:      #7C3AED;
+  --slate:       #0F172A;
+  --slate-600:   #475569;
+  --slate-500:   #64748B;
+  --slate-400:   #94A3B8;
+  --slate-200:   #E2E8F0;
+  --slate-100:   #F1F5F9;
+  --bg:          #FAFAFA;
+  --white:       #FFFFFF;
+  --gradient:    linear-gradient(135deg, var(--indigo), var(--violet));
+}
+
+body {
+  background: var(--bg);
+  color: var(--slate);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: var(--indigo); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15,23,42,.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  height: 76px;
+  display: flex; align-items: center;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+.nav-inner {
+  max-width: 1180px; margin: 0 auto; width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo img { height: 56px; width: auto; }
+.nav-logo { text-decoration: none; }
+
+.nav-back {
+  font-size: 14px; font-weight: 500; color: rgba(255,255,255,.65);
+  padding: 7px 14px; border-radius: 8px; transition: all .2s;
+}
+.nav-back:hover { color: white; background: rgba(255,255,255,.08); text-decoration: none; }
+
+/* ── LEGAL CONTENT ── */
+.legal-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 64px) 80px;
+}
+
+.legal-page h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
+.legal-page h1 .accent {
+  background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.legal-date {
+  font-size: 13px; color: var(--slate-500); margin-bottom: 48px;
+}
+
+.legal-page h2 {
+  font-size: 20px; font-weight: 700;
+  margin: 40px 0 16px;
+  color: var(--slate);
+}
+
+.legal-page h3 {
+  font-size: 16px; font-weight: 600;
+  margin: 24px 0 10px;
+  color: var(--indigo);
+}
+
+.legal-page p, .legal-page li {
+  font-size: 15px; color: var(--slate-600); line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.legal-page ul, .legal-page ol {
+  padding-left: 20px; margin-bottom: 16px;
+}
+
+.legal-page li { margin-bottom: 6px; }
+
+.legal-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: 14px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+
+.legal-card p:last-child { margin-bottom: 0; }
+
+/* Cookie table */
+.cookie-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.cookie-table th {
+  background: var(--slate);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 12px 16px;
+}
+
+.cookie-table th:first-child { border-radius: 10px 0 0 0; }
+.cookie-table th:last-child { border-radius: 0 10px 0 0; }
+
+.cookie-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--slate-200);
+  color: var(--slate-600);
+  vertical-align: top;
+}
+
+.cookie-table tr:last-child td { border-bottom: none; }
+
+.cookie-table tbody tr:hover { background: var(--slate-100); }
+
+.cookie-badge {
+  display: inline-block;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+  letter-spacing: .5px; text-transform: uppercase;
+}
+
+.badge-required {
+  background: rgba(79,70,229,.08);
+  color: var(--indigo);
+}
+
+.badge-analytics {
+  background: rgba(245,158,11,.1);
+  color: #B45309;
+}
+
+.badge-marketing {
+  background: rgba(239,68,68,.08);
+  color: #DC2626;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #0A0F1E;
+  padding: 32px 0;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+
+.footer-logo img { height: 44px; width: auto; opacity: .8; }
+
+.footer-links {
+  display: flex; gap: 24px; list-style: none;
+}
+.footer-links a { font-size: 13px; color: #475569; transition: color .2s; text-decoration: none; }
+.footer-links a:hover { color: #94A3B8; }
+
+.footer-copy { font-size: 12px; color: #334155; }
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .cookie-table { font-size: 12px; }
+  .cookie-table th, .cookie-table td { padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo.svg" alt="MENTIS Digital">
+    </a>
+    <a class="nav-back" href="index.html">&larr; Torna al sito</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="legal-page">
+
+  <h1>Cookie <span class="accent">Policy</span></h1>
+  <p class="legal-date">Ultimo aggiornamento: marzo 2026</p>
+
+  <p>Questa Cookie Policy spiega cosa sono i cookie, quali tipologie utilizziamo sul sito di MENTIS Digital e come puoi gestirli, ai sensi del Regolamento (UE) 2016/679 (GDPR), del D.Lgs. 196/2003 e delle Linee Guida del Garante per la protezione dei dati personali del 10 giugno 2021.</p>
+
+  <h2>1. Cosa sono i cookie</h2>
+  <p>I cookie sono piccoli file di testo che i siti web salvano sul tuo dispositivo (computer, smartphone, tablet) quando li visiti. Servono a far funzionare il sito correttamente, migliorare l'esperienza di navigazione e, in alcuni casi, raccogliere informazioni statistiche sull'utilizzo del sito.</p>
+
+  <h2>2. Tipologie di cookie utilizzati</h2>
+
+  <table class="cookie-table">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Nome</th>
+        <th>Finalit&agrave;</th>
+        <th>Durata</th>
+        <th>Consenso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="cookie-badge badge-required">Tecnico</span></td>
+        <td>Sessione del sito</td>
+        <td>Necessario per il funzionamento base del sito (navigazione, form di contatto)</td>
+        <td>Sessione</td>
+        <td>Non richiesto</td>
+      </tr>
+      <tr>
+        <td><span class="cookie-badge badge-analytics">Analytics</span></td>
+        <td>_ga, _ga_*</td>
+        <td>Google Analytics &mdash; raccolta dati di navigazione anonimizzati (pagine visitate, durata sessione, provenienza)</td>
+        <td>24 mesi</td>
+        <td>Richiesto</td>
+      </tr>
+      <tr>
+        <td><span class="cookie-badge badge-analytics">Analytics</span></td>
+        <td>_gid</td>
+        <td>Google Analytics &mdash; distingue gli utenti</td>
+        <td>24 ore</td>
+        <td>Richiesto</td>
+      </tr>
+      <tr>
+        <td><span class="cookie-badge badge-marketing">Marketing</span></td>
+        <td>_fbp</td>
+        <td>Meta Pixel &mdash; monitoraggio conversioni da campagne Facebook/Instagram (se attivo)</td>
+        <td>90 giorni</td>
+        <td>Richiesto</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2.1 Cookie tecnici (necessari)</h3>
+  <p>Sono indispensabili per il funzionamento del sito. Senza questi cookie, il sito non funzionerebbe correttamente. Non richiedono il tuo consenso ai sensi dell'art. 122 del Codice Privacy e delle Linee Guida del Garante.</p>
+
+  <h3>2.2 Cookie analytics</h3>
+  <p>Utilizziamo <strong>Google Analytics</strong> con anonimizzazione dell'indirizzo IP per raccogliere statistiche aggregate sull'utilizzo del sito (numero di visitatori, pagine pi&ugrave; viste, tempo di permanenza). Questi dati ci aiutano a migliorare il sito.</p>
+  <p>I cookie analytics vengono installati <strong>solo previo tuo consenso</strong>. Puoi revocare il consenso in qualsiasi momento tramite le impostazioni del browser.</p>
+  <p>Fornitore: Google LLC &mdash; <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a></p>
+
+  <h3>2.3 Cookie di marketing</h3>
+  <p>Se attivati, i cookie di marketing (Meta Pixel) vengono utilizzati per monitorare l'efficacia delle campagne pubblicitarie su Facebook e Instagram. Vengono installati <strong>solo previo tuo consenso</strong>.</p>
+  <p>Fornitore: Meta Platforms Inc. &mdash; <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Privacy Policy di Meta</a></p>
+
+  <h2>3. Come gestire i cookie</h2>
+  <p>Puoi gestire le preferenze sui cookie in diversi modi:</p>
+
+  <h3>3.1 Tramite il banner cookie</h3>
+  <p>Al primo accesso al sito, un banner ti permette di accettare o rifiutare i cookie non tecnici. Puoi modificare le tue scelte in qualsiasi momento.</p>
+
+  <h3>3.2 Tramite le impostazioni del browser</h3>
+  <p>Ogni browser permette di bloccare o cancellare i cookie. Ecco le istruzioni per i browser principali:</p>
+
+  <div class="legal-card">
+    <p><strong>Google Chrome</strong><br>
+    Impostazioni &rarr; Privacy e sicurezza &rarr; Cookie e altri dati dei siti &rarr; Gestisci le eccezioni</p>
+
+    <p><strong>Mozilla Firefox</strong><br>
+    Impostazioni &rarr; Privacy e sicurezza &rarr; Cookie e dati dei siti web &rarr; Gestisci eccezioni</p>
+
+    <p><strong>Apple Safari</strong><br>
+    Preferenze &rarr; Privacy &rarr; Gestisci dati siti web</p>
+
+    <p><strong>Microsoft Edge</strong><br>
+    Impostazioni &rarr; Cookie e autorizzazioni sito &rarr; Gestisci e elimina cookie e dati dei siti</p>
+
+    <p><strong>Safari (iPhone/iPad)</strong><br>
+    Impostazioni &rarr; Safari &rarr; Blocca tutti i cookie</p>
+  </div>
+
+  <p><strong>Nota:</strong> la disabilitazione dei cookie tecnici pu&ograve; compromettere il funzionamento del sito. La disabilitazione dei cookie analytics e marketing non ha alcun impatto sulla navigazione.</p>
+
+  <h3>3.3 Opt-out specifico per Google Analytics</h3>
+  <p>Puoi impedire la raccolta dei dati da parte di Google Analytics installando il <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">componente aggiuntivo del browser per la disattivazione di Google Analytics</a>.</p>
+
+  <h2>4. Trasferimento dati</h2>
+  <p>I dati raccolti tramite cookie analytics e marketing possono essere trasferiti a server situati negli Stati Uniti (Google, Meta). Il trasferimento avviene sulla base di clausole contrattuali standard e/o dell'EU-US Data Privacy Framework.</p>
+  <p>Per maggiori informazioni, consulta la nostra <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
+  <h2>5. Aggiornamenti</h2>
+  <p>Questa Cookie Policy pu&ograve; essere aggiornata periodicamente. Eventuali modifiche saranno pubblicate su questa pagina con indicazione della data di ultimo aggiornamento.</p>
+
+  <h2>6. Contatti</h2>
+  <p>Per domande sulla presente Cookie Policy o per esercitare i tuoi diritti, scrivi a: <a href="mailto:mentis.ai.outreach@gmail.com">mentis.ai.outreach@gmail.com</a></p>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">
+      <img src="logo.svg" alt="MENTIS Digital">
+    </a>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+      <li><a href="termini-servizio.html">Termini</a></li>
+      <li><a href="cookie-policy.html">Cookie</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 Mentis Digital &mdash; Tutti i diritti riservati</div>
+  </div>
+</footer>
+
+</body>
+</html>

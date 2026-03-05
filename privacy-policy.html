@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — MENTIS Digital</title>
+<meta name="description" content="Informativa sulla privacy di MENTIS Digital ai sensi del Regolamento UE 2016/679 (GDPR) e del D.Lgs. 196/2003.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --indigo:      #4F46E5;
+  --indigo-dark: #3730A3;
+  --violet:      #7C3AED;
+  --slate:       #0F172A;
+  --slate-600:   #475569;
+  --slate-500:   #64748B;
+  --slate-400:   #94A3B8;
+  --slate-200:   #E2E8F0;
+  --slate-100:   #F1F5F9;
+  --bg:          #FAFAFA;
+  --white:       #FFFFFF;
+  --gradient:    linear-gradient(135deg, var(--indigo), var(--violet));
+}
+
+body {
+  background: var(--bg);
+  color: var(--slate);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: var(--indigo); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15,23,42,.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  height: 76px;
+  display: flex; align-items: center;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+.nav-inner {
+  max-width: 1180px; margin: 0 auto; width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo img { height: 56px; width: auto; }
+.nav-logo { text-decoration: none; }
+
+.nav-back {
+  font-size: 14px; font-weight: 500; color: rgba(255,255,255,.65);
+  padding: 7px 14px; border-radius: 8px; transition: all .2s;
+}
+.nav-back:hover { color: white; background: rgba(255,255,255,.08); text-decoration: none; }
+
+/* ── LEGAL CONTENT ── */
+.legal-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 64px) 80px;
+}
+
+.legal-page h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
+.legal-page h1 .accent {
+  background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.legal-date {
+  font-size: 13px; color: var(--slate-500); margin-bottom: 48px;
+}
+
+.legal-page h2 {
+  font-size: 20px; font-weight: 700;
+  margin: 40px 0 16px;
+  color: var(--slate);
+}
+
+.legal-page h3 {
+  font-size: 16px; font-weight: 600;
+  margin: 24px 0 10px;
+  color: var(--indigo);
+}
+
+.legal-page p, .legal-page li {
+  font-size: 15px; color: var(--slate-600); line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.legal-page ul, .legal-page ol {
+  padding-left: 20px; margin-bottom: 16px;
+}
+
+.legal-page li { margin-bottom: 6px; }
+
+.legal-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: 14px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+
+.legal-card p:last-child { margin-bottom: 0; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0A0F1E;
+  padding: 32px 0;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+
+.footer-logo img { height: 44px; width: auto; opacity: .8; }
+
+.footer-links {
+  display: flex; gap: 24px; list-style: none;
+}
+.footer-links a { font-size: 13px; color: #475569; transition: color .2s; text-decoration: none; }
+.footer-links a:hover { color: #94A3B8; }
+
+.footer-copy { font-size: 12px; color: #334155; }
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo.svg" alt="MENTIS Digital">
+    </a>
+    <a class="nav-back" href="index.html">&larr; Torna al sito</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="legal-page">
+
+  <h1>Privacy <span class="accent">Policy</span></h1>
+  <p class="legal-date">Ultimo aggiornamento: marzo 2026</p>
+
+  <p>Informativa sul trattamento dei dati personali ai sensi degli artt. 13 e 14 del Regolamento (UE) 2016/679 (GDPR) e del D.Lgs. 196/2003 (Codice in materia di protezione dei dati personali).</p>
+
+  <h2>1. Titolare del trattamento</h2>
+  <div class="legal-card">
+    <p><strong>Alessandro Capurso</strong></p>
+    <p>operante con il marchio <strong>MENTIS Digital</strong></p>
+    <p>Email: <a href="mailto:mentis.ai.outreach@gmail.com">mentis.ai.outreach@gmail.com</a></p>
+  </div>
+  <p>Per qualsiasi richiesta relativa al trattamento dei tuoi dati personali, puoi contattarci all'indirizzo email indicato sopra.</p>
+
+  <h2>2. Dati personali raccolti</h2>
+  <p>Raccogliamo dati personali nelle seguenti modalit&agrave;:</p>
+
+  <h3>2.1 Dati forniti tramite i form di contatto</h3>
+  <ul>
+    <li>Nome e cognome</li>
+    <li>Indirizzo email</li>
+    <li>Numero di telefono (facoltativo)</li>
+    <li>Messaggio o richiesta</li>
+    <li>Tipo di richiesta (call, preventivo, informazioni)</li>
+  </ul>
+
+  <h3>2.2 Dati raccolti tramite i servizi BotReady e BotSocial</h3>
+  <ul>
+    <li>Dati del cliente business: nome attivit&agrave;, tipo di attivit&agrave;, informazioni operative (orari, menu, FAQ)</li>
+    <li>Dati processati dal chatbot: i messaggi inviati dai clienti finali attraverso WhatsApp o Telegram vengono processati dal sistema per generare risposte automatiche</li>
+  </ul>
+
+  <h3>2.3 Dati raccolti automaticamente (cookie)</h3>
+  <ul>
+    <li>Cookie tecnici necessari al funzionamento del sito</li>
+    <li>Dati di navigazione anonimizzati tramite Google Analytics (se attivo) — vedi <a href="cookie-policy.html">Cookie Policy</a></li>
+  </ul>
+
+  <p>Non raccogliamo dati sensibili (categorie particolari di dati ai sensi dell'art. 9 GDPR).</p>
+
+  <h2>3. Finalit&agrave; del trattamento</h2>
+  <ul>
+    <li><strong>Erogazione dei servizi</strong> — configurazione e gestione dei prodotti BotReady e BotSocial per la tua attivit&agrave; (base giuridica: esecuzione contratto, art. 6.1.b GDPR)</li>
+    <li><strong>Risposte alle richieste di contatto</strong> — gestione delle comunicazioni inviate tramite i form del sito (base giuridica: misure precontrattuali, art. 6.1.b GDPR)</li>
+    <li><strong>Comunicazioni di servizio</strong> — aggiornamenti tecnici, notifiche sul servizio e supporto (base giuridica: esecuzione contratto, art. 6.1.b GDPR)</li>
+    <li><strong>Adempimenti legali e fiscali</strong> — fatturazione e obblighi contabili (base giuridica: obbligo legale, art. 6.1.c GDPR)</li>
+    <li><strong>Analisi del sito</strong> — miglioramento dell'esperienza utente tramite dati di navigazione anonimizzati (base giuridica: consenso, art. 6.1.a GDPR)</li>
+  </ul>
+
+  <h2>4. Periodo di conservazione</h2>
+  <ul>
+    <li><strong>Dati contrattuali</strong>: per tutta la durata del rapporto contrattuale e per 1 (uno) anno successivo alla cessazione, per la gestione di eventuali contestazioni</li>
+    <li><strong>Dati di contatto (form)</strong>: per un massimo di 12 mesi dalla ricezione, salvo instaurazione di rapporto contrattuale</li>
+    <li><strong>Dati fiscali</strong>: 10 anni ai sensi dell'art. 2220 c.c.</li>
+    <li><strong>Messaggi processati dal chatbot</strong>: conservati per la durata del contratto e cancellati entro 30 giorni dalla cessazione del servizio</li>
+  </ul>
+  <p>Trascorsi i termini indicati, i dati saranno cancellati o anonimizzati in modo irreversibile.</p>
+
+  <h2>5. Destinatari dei dati</h2>
+  <p>I tuoi dati possono essere comunicati a:</p>
+  <ul>
+    <li><strong>Fornitori di servizi tecnici</strong> — piattaforme di hosting (Netlify), API di messaggistica (WhatsApp Business API, Telegram Bot API), servizi di AI (Anthropic/Claude API), esclusivamente per l'erogazione del servizio</li>
+    <li><strong>Servizi di analytics</strong> — Google Analytics, limitatamente ai dati di navigazione anonimizzati e solo previo consenso</li>
+    <li><strong>Consulenti</strong> — commercialista e consulente fiscale, limitatamente ai dati di fatturazione</li>
+  </ul>
+  <p>Non vendiamo, cediamo o condividiamo i tuoi dati con terze parti per finalit&agrave; di marketing.</p>
+
+  <h2>6. Trasferimento dati extra-UE</h2>
+  <p>Alcuni fornitori di servizi tecnici (Anthropic, Google) trattano dati al di fuori dell'Unione Europea. Il trasferimento avviene sulla base di:</p>
+  <ul>
+    <li><strong>Clausole contrattuali standard</strong> approvate dalla Commissione Europea (art. 46, par. 2, lett. c, GDPR)</li>
+    <li><strong>EU-US Data Privacy Framework</strong>, ove applicabile (decisione di adeguatezza della Commissione Europea)</li>
+  </ul>
+
+  <h2>7. Trattamento dati nell'ambito dei servizi chatbot</h2>
+  <p>Nell'erogazione dei servizi BotReady e BotSocial, MENTIS Digital agisce come <strong>Responsabile del trattamento</strong> (art. 28 GDPR) per conto del cliente business, che rimane Titolare del trattamento rispetto ai dati dei propri clienti finali.</p>
+  <p>I messaggi scambiati tra il chatbot e i clienti finali vengono processati in tempo reale e non vengono utilizzati per finalit&agrave; diverse dall'erogazione del servizio.</p>
+
+  <h2>8. Diritti dell'interessato</h2>
+  <p>In qualit&agrave; di interessato, hai il diritto di (artt. 15-22 GDPR):</p>
+  <ul>
+    <li><strong>Accesso</strong> — ottenere conferma dell'esistenza dei tuoi dati e riceverne copia (art. 15)</li>
+    <li><strong>Rettifica</strong> — correggere dati inesatti o incompleti (art. 16)</li>
+    <li><strong>Cancellazione</strong> — ottenere la cancellazione dei tuoi dati, nei limiti previsti dalla legge (art. 17)</li>
+    <li><strong>Limitazione</strong> — richiedere la limitazione del trattamento (art. 18)</li>
+    <li><strong>Portabilit&agrave;</strong> — ricevere i tuoi dati in formato strutturato e leggibile da dispositivo automatico (art. 20)</li>
+    <li><strong>Opposizione</strong> — opporti al trattamento in qualsiasi momento (art. 21)</li>
+    <li><strong>Revoca del consenso</strong> — revocare il consenso prestato per i cookie analytics in qualsiasi momento, senza pregiudicare la liceit&agrave; del trattamento basato sul consenso prima della revoca</li>
+  </ul>
+  <p>Per esercitare i tuoi diritti, scrivi a: <a href="mailto:mentis.ai.outreach@gmail.com">mentis.ai.outreach@gmail.com</a></p>
+  <p>Risponderemo entro <strong>30 giorni</strong> dalla ricezione della richiesta (art. 12 GDPR).</p>
+  <p>Hai inoltre il diritto di proporre reclamo al <strong>Garante per la protezione dei dati personali</strong> (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>) qualora ritenga che il trattamento dei tuoi dati violi il GDPR.</p>
+
+  <h2>9. Cookie</h2>
+  <p>Per informazioni dettagliate sull'utilizzo dei cookie, consulta la nostra <a href="cookie-policy.html">Cookie Policy</a>.</p>
+
+  <h2>10. Modifiche alla presente informativa</h2>
+  <p>Ci riserviamo il diritto di aggiornare questa informativa. Eventuali modifiche saranno pubblicate su questa pagina con indicazione della data di ultimo aggiornamento.</p>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">
+      <img src="logo.svg" alt="MENTIS Digital">
+    </a>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+      <li><a href="termini-servizio.html">Termini</a></li>
+      <li><a href="cookie-policy.html">Cookie</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 Mentis Digital &mdash; Tutti i diritti riservati</div>
+  </div>
+</footer>
+
+</body>
+</html>

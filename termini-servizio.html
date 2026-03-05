@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termini di Servizio — MENTIS Digital</title>
+<meta name="description" content="Termini e condizioni generali di servizio di MENTIS Digital per i prodotti BotReady e BotSocial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --indigo:      #4F46E5;
+  --indigo-dark: #3730A3;
+  --violet:      #7C3AED;
+  --slate:       #0F172A;
+  --slate-600:   #475569;
+  --slate-500:   #64748B;
+  --slate-400:   #94A3B8;
+  --slate-200:   #E2E8F0;
+  --slate-100:   #F1F5F9;
+  --bg:          #FAFAFA;
+  --white:       #FFFFFF;
+  --gradient:    linear-gradient(135deg, var(--indigo), var(--violet));
+}
+
+body {
+  background: var(--bg);
+  color: var(--slate);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: var(--indigo); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(15,23,42,.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  height: 76px;
+  display: flex; align-items: center;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+.nav-inner {
+  max-width: 1180px; margin: 0 auto; width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo img { height: 56px; width: auto; }
+.nav-logo { text-decoration: none; }
+
+.nav-back {
+  font-size: 14px; font-weight: 500; color: rgba(255,255,255,.65);
+  padding: 7px 14px; border-radius: 8px; transition: all .2s;
+}
+.nav-back:hover { color: white; background: rgba(255,255,255,.08); text-decoration: none; }
+
+/* ── LEGAL CONTENT ── */
+.legal-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 120px clamp(20px, 5vw, 64px) 80px;
+}
+
+.legal-page h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+
+.legal-page h1 .accent {
+  background: var(--gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.legal-date {
+  font-size: 13px; color: var(--slate-500); margin-bottom: 48px;
+}
+
+.legal-page h2 {
+  font-size: 20px; font-weight: 700;
+  margin: 40px 0 16px;
+  color: var(--slate);
+}
+
+.legal-page h3 {
+  font-size: 16px; font-weight: 600;
+  margin: 24px 0 10px;
+  color: var(--indigo);
+}
+
+.legal-page p, .legal-page li {
+  font-size: 15px; color: var(--slate-600); line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.legal-page ul, .legal-page ol {
+  padding-left: 20px; margin-bottom: 16px;
+}
+
+.legal-page li { margin-bottom: 6px; }
+
+.legal-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: 14px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+
+.legal-card p:last-child { margin-bottom: 0; }
+
+.legal-highlight {
+  background: linear-gradient(135deg, rgba(79,70,229,.04), rgba(124,58,237,.03));
+  border: 1px solid rgba(79,70,229,.12);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #0A0F1E;
+  padding: 32px 0;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+
+.footer-logo img { height: 44px; width: auto; opacity: .8; }
+
+.footer-links {
+  display: flex; gap: 24px; list-style: none;
+}
+.footer-links a { font-size: 13px; color: #475569; transition: color .2s; text-decoration: none; }
+.footer-links a:hover { color: #94A3B8; }
+
+.footer-copy { font-size: 12px; color: #334155; }
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo.svg" alt="MENTIS Digital">
+    </a>
+    <a class="nav-back" href="index.html">&larr; Torna al sito</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="legal-page">
+
+  <h1>Termini di <span class="accent">Servizio</span></h1>
+  <p class="legal-date">Ultimo aggiornamento: marzo 2026</p>
+
+  <p>I presenti Termini di Servizio (di seguito "Termini") regolano il rapporto tra <strong>Alessandro Capurso</strong>, operante con il marchio <strong>MENTIS Digital</strong> (di seguito "Fornitore"), e il cliente (di seguito "Cliente") che utilizza i servizi offerti, inclusi i prodotti <strong>BotReady</strong> e <strong>BotSocial</strong>.</p>
+  <p>Utilizzando i servizi MENTIS Digital, il Cliente accetta integralmente i presenti Termini.</p>
+
+  <h2>1. Descrizione dei servizi</h2>
+  <p>MENTIS Digital offre servizi di automazione digitale per PMI, tra cui:</p>
+
+  <h3>1.1 BotReady</h3>
+  <p>Servizio di <strong>risponditore automatico intelligente</strong> basato su intelligenza artificiale, configurato per l'attivit&agrave; del Cliente. Il chatbot opera su <strong>WhatsApp Business</strong> e/o <strong>Telegram</strong> e gestisce in modo automatico le richieste dei clienti finali (prenotazioni, FAQ, informazioni).</p>
+
+  <h3>1.2 BotSocial</h3>
+  <p>Servizio di <strong>gestione social media assistita da AI</strong>. Creazione e pubblicazione di contenuti professionali su <strong>Instagram</strong> e <strong>Facebook</strong>, con calendario editoriale, hashtag ottimizzati e post personalizzati per il settore del Cliente.</p>
+
+  <h3>1.3 Consulenza e automazioni su misura</h3>
+  <p>Analisi, progettazione e implementazione di soluzioni digitali personalizzate, workflow automatizzati e integrazioni con sistemi esistenti.</p>
+
+  <h2>2. Abbonamento e pagamenti</h2>
+  <ul>
+    <li>I servizi BotReady e BotSocial sono erogati con formula di <strong>abbonamento mensile</strong></li>
+    <li>Il pagamento avviene tramite <strong>bonifico bancario</strong> secondo le istruzioni fornite da MENTIS Digital</li>
+    <li>L'abbonamento si rinnova <strong>automaticamente</strong> ogni mese alla data di attivazione</li>
+    <li>I prezzi sono quelli indicati sul sito o nel preventivo accettato al momento della sottoscrizione</li>
+    <li>MENTIS Digital si riserva di modificare i prezzi con un preavviso di almeno 30 giorni; il Cliente pu&ograve; recedere prima dell'entrata in vigore del nuovo prezzo</li>
+    <li>In caso di mancato pagamento entro 15 giorni dalla scadenza, MENTIS Digital si riserva il diritto di sospendere il servizio previa comunicazione via email</li>
+  </ul>
+
+  <h2>3. Periodo di prova</h2>
+  <p>Ove previsto, MENTIS Digital offre un <strong>periodo di prova gratuito</strong> (14 giorni per BotReady). Durante il periodo di prova il servizio &egrave; pienamente funzionante. Al termine del periodo di prova, il servizio si converte automaticamente in abbonamento a pagamento salvo disdetta del Cliente.</p>
+
+  <h2>4. Cancellazione e recesso</h2>
+  <div class="legal-highlight">
+    Il Cliente pu&ograve; cancellare l'abbonamento in qualsiasi momento, <strong>senza penali</strong>, comunicandolo via email con un preavviso di almeno <strong>30 (trenta) giorni</strong> rispetto alla data di rinnovo successiva. Il servizio rester&agrave; attivo fino alla scadenza del periodo gi&agrave; pagato.
+  </div>
+  <p>MENTIS Digital pu&ograve; recedere dal contratto con un preavviso di 30 giorni comunicato via email, rimborsando eventuali importi gi&agrave; corrisposti per periodi non goduti.</p>
+  <p>In caso di violazione dei presenti Termini da parte del Cliente, MENTIS Digital pu&ograve; sospendere o risolvere il contratto con effetto immediato.</p>
+
+  <h2>5. Limitazione di responsabilit&agrave;</h2>
+
+  <h3>5.1 Risposte generate dall'AI (BotReady)</h3>
+  <ul>
+    <li>Il chatbot utilizza intelligenza artificiale per generare risposte automatiche</li>
+    <li>MENTIS Digital <strong>non garantisce</strong> che le risposte siano sempre accurate, complete o prive di errori</li>
+    <li>MENTIS Digital <strong>non &egrave; responsabile</strong> per danni diretti, indiretti, incidentali o consequenziali derivanti da risposte errate, incomplete o fuorvianti fornite dal chatbot</li>
+    <li>Il Cliente riconosce che il chatbot &egrave; uno strumento di supporto e <strong>non sostituisce</strong> il giudizio umano</li>
+  </ul>
+
+  <h3>5.2 Contenuti social (BotSocial)</h3>
+  <ul>
+    <li>I contenuti pubblicati sono generati con l'assistenza di AI e approvati dal processo editoriale di MENTIS Digital</li>
+    <li>MENTIS Digital non &egrave; responsabile per interpretazioni errate dei contenuti da parte di terzi</li>
+    <li>Il Cliente &egrave; responsabile della veridicit&agrave; delle informazioni fornite per la creazione dei contenuti</li>
+  </ul>
+
+  <h3>5.3 Limitazione generale</h3>
+  <p>MENTIS Digital si impegna a mantenere i servizi operativi con disponibilit&agrave; ragionevole, salvo interruzioni per manutenzione o cause di forza maggiore. La responsabilit&agrave; complessiva di MENTIS Digital, per qualsiasi causa, &egrave; limitata all'importo corrisposto dal Cliente nei <strong>3 (tre) mesi</strong> precedenti l'evento contestato.</p>
+
+  <h2>6. Propriet&agrave; intellettuale</h2>
+  <ul>
+    <li>Il codice sorgente, le configurazioni, i prompt, le logiche di funzionamento e qualsiasi elemento sviluppato da MENTIS Digital restano di <strong>propriet&agrave; esclusiva di MENTIS Digital</strong></li>
+    <li>Al Cliente viene concessa una <strong>licenza d'uso non esclusiva e non trasferibile</strong>, limitata alla durata dell'abbonamento</li>
+    <li>I contenuti social creati per il Cliente (testi, grafiche) sono ceduti in licenza d'uso al Cliente per la durata del servizio</li>
+    <li>Alla cessazione del contratto, il Cliente non ha diritto di continuare a utilizzare i sistemi n&eacute; di ottenerne copia</li>
+  </ul>
+
+  <h2>7. Dati del Cliente</h2>
+  <div class="legal-highlight">
+    I dati forniti dal Cliente (informazioni sull'attivit&agrave;, FAQ, contenuti, menu, listini, liste clienti) rimangono di <strong>propriet&agrave; esclusiva del Cliente</strong>. MENTIS Digital li utilizza esclusivamente per la configurazione e il funzionamento dei servizi.
+  </div>
+  <p>Alla cessazione del contratto, MENTIS Digital canceller&agrave; i dati del Cliente entro 30 giorni dalla disattivazione, salvo obblighi di legge che ne impongano la conservazione.</p>
+  <p>Per il trattamento dei dati personali si rimanda alla <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
+  <h2>8. Obblighi del Cliente</h2>
+  <p>Il Cliente si impegna a:</p>
+  <ul>
+    <li>Fornire informazioni accurate e aggiornate per la configurazione dei servizi</li>
+    <li>Non utilizzare i servizi per finalit&agrave; illecite, ingannevoli o contrarie all'ordine pubblico</li>
+    <li>Informare i propri clienti finali che stanno interagendo con un sistema automatizzato (per BotReady)</li>
+    <li>Rispettare la normativa GDPR per quanto riguarda i dati dei propri clienti finali</li>
+    <li>Non tentare di decompilare, disassemblare o reverse-engineerare i sistemi forniti</li>
+  </ul>
+
+  <h2>9. Modifica dei Termini</h2>
+  <p>MENTIS Digital si riserva il diritto di modificare unilateralmente i presenti Termini. Le modifiche saranno comunicate al Cliente via email con un preavviso di almeno <strong>30 (trenta) giorni</strong>.</p>
+  <p>Se il Cliente non accetta le modifiche, potr&agrave; recedere senza penali entro la data di entrata in vigore dei nuovi Termini. La prosecuzione nell'uso del servizio costituisce accettazione dei Termini modificati (art. 1341 c.c.).</p>
+
+  <h2>10. Forza maggiore</h2>
+  <p>MENTIS Digital non &egrave; responsabile per ritardi o interruzioni causati da eventi di forza maggiore, inclusi: guasti infrastrutturali di terze parti, interruzioni delle piattaforme (WhatsApp, Telegram, Instagram, Facebook), catastrofi naturali, provvedimenti dell'autorit&agrave;.</p>
+
+  <h2>11. Legge applicabile e foro competente</h2>
+  <p>I presenti Termini sono regolati dalla <strong>legge italiana</strong>.</p>
+  <p>Per qualsiasi controversia &egrave; competente in via esclusiva il <strong>Foro di Milano</strong>, salvo il foro inderogabile del consumatore ai sensi dell'art. 66-bis del Codice del Consumo (D.lgs. 206/2005), ove applicabile.</p>
+
+  <h2>12. Contatti</h2>
+  <div class="legal-card">
+    <p><strong>Alessandro Capurso</strong></p>
+    <p>operante con il marchio <strong>MENTIS Digital</strong></p>
+    <p>Email: <a href="mailto:mentis.ai.outreach@gmail.com">mentis.ai.outreach@gmail.com</a></p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">
+      <img src="logo.svg" alt="MENTIS Digital">
+    </a>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+      <li><a href="termini-servizio.html">Termini</a></li>
+      <li><a href="cookie-policy.html">Cookie</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 Mentis Digital &mdash; Tutti i diritti riservati</div>
+  </div>
+</footer>
+
+</body>
+</html>
