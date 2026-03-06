@@ -1106,7 +1106,7 @@ footer {
           <span class="portfolio-tag">PMI Italiane</span>
           <span class="portfolio-tag">24/7</span>
         </div>
-        <a href="https://capu98.github.io/botready" target="_blank" class="portfolio-link">
+        <a href="https://capu98.github.io/botready" target="_blank" class="portfolio-link" data-site="botready">
           Visita BotReady
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/>
@@ -1155,7 +1155,7 @@ footer {
           <span class="portfolio-tag" style="background:rgba(225,29,120,.12);border-color:rgba(225,29,120,.25);color:#F9A8D4">Social AI</span>
           <span class="portfolio-tag" style="background:rgba(225,29,120,.12);border-color:rgba(225,29,120,.25);color:#F9A8D4">Beauty & PMI</span>
         </div>
-        <a href="https://capu98.github.io/botsocial" target="_blank" class="portfolio-link" style="background:linear-gradient(135deg,#E11D78,#9D174D);box-shadow:0 4px 20px rgba(225,29,120,.3)">
+        <a href="https://capu98.github.io/botsocial" target="_blank" class="portfolio-link" data-site="botsocial" style="background:linear-gradient(135deg,#E11D78,#9D174D);box-shadow:0 4px 20px rgba(225,29,120,.3)">
           Visita BotSocial
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/>
@@ -1204,7 +1204,7 @@ footer {
           <span class="portfolio-tag" style="background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.25);color:#FCD34D">Outreach B2B</span>
           <span class="portfolio-tag" style="background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.25);color:#FCD34D">PMI Italiane</span>
         </div>
-        <a href="https://capu98.github.io/botlead/" target="_blank" class="portfolio-link" style="background:linear-gradient(135deg,#F59E0B,#F97316);box-shadow:0 4px 20px rgba(245,158,11,.3)">
+        <a href="https://capu98.github.io/botlead/" target="_blank" class="portfolio-link" data-site="botlead" style="background:linear-gradient(135deg,#F59E0B,#F97316);box-shadow:0 4px 20px rgba(245,158,11,.3)">
           Visita BotLead
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="2" y1="7" x2="12" y2="7"/><polyline points="8,3 12,7 8,11"/>
@@ -1540,6 +1540,31 @@ function loadAnalytics() {
   s.src = 'https://plausible.io/js/script.js';
   document.head.appendChild(s);
 }
+</script>
+
+<script>
+// "Sei qui" — se l'utente viene da uno dei nostri siti, mostra "Sei qui" invece di "Visita"
+(function() {
+  var ref = document.referrer || '';
+  var map = {
+    'botready':  'capu98.github.io/botready',
+    'botsocial': 'capu98.github.io/botsocial',
+    'botlead':   'capu98.github.io/botlead'
+  };
+  Object.keys(map).forEach(function(site) {
+    if (ref.indexOf(map[site]) !== -1) {
+      var link = document.querySelector('[data-site="' + site + '"]');
+      if (link) {
+        link.innerHTML = '&#10003; Sei qui';
+        link.style.opacity = '0.55';
+        link.style.cursor = 'default';
+        link.style.pointerEvents = 'none';
+        link.removeAttribute('href');
+        link.removeAttribute('target');
+      }
+    }
+  });
+})();
 </script>
 
 </body>
